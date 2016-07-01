@@ -25,8 +25,7 @@ public class MemberBean {
 		this.pw = pw;
 		this.name = name;
 		this.ssn = ssn;
-		String now = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
-		this.regDate = now;
+		String now = regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 		String[] ssnArr = ssn.split("-");
 		String[] nowArr = now.split("-");
 		int ageResult1 = Integer.parseInt(ssnArr[0]);
@@ -70,6 +69,9 @@ public class MemberBean {
 	public void setName(String name){
 		this.name = name;
 	}
+	public void setSsn(String ssn){
+		this.ssn = ssn;
+	}
 	//-----------------------------
 	public String getId(){
 		return this.id;
@@ -82,6 +84,10 @@ public class MemberBean {
 	}
 	public String getRegDate(){
 		return this.regDate;
+	}
+	
+	public void setRegDate() {
+		this.regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 	}
 	public String getGender(){
 		return this.gender;

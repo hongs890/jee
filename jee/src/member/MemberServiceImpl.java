@@ -7,32 +7,60 @@ package member;
  * @story :
  */
 public class MemberServiceImpl implements MemberService {
-	MemberBean student;
-		
+	
+	MemberDAO dao = MemberDAO.getInstance();
+	
+	private static MemberServiceImpl instanceImpl = new MemberServiceImpl();
+	
+	private MemberServiceImpl() {}
+	public static MemberServiceImpl getInstanceImpl() {
+		return instanceImpl;
+	}
+	
+	
+	
 	@Override
-	public void registStudent(String id, String pw, String name, String ssn) {
-		// id, 비번, 이름, 주민등록번호
-		student = new MemberBean(id, pw, name, ssn);
+	public String regist(MemberBean mem) {
+		String msg = "";
+		String sql = "insert into member(id,pw,name,reg_date,ssn)"
+				+ "values('"+mem.getId()+"','"+mem.getPw()+"','"+mem.getName()+"',"
+						+ "'"+mem.getRegDate()+"','"+mem.getSsn()+"')";
+		int result = dao.exeUpdate(sql);
+		if (result==1) {
+			msg = "회원가입 축하합니다.";
+		}else{
+			msg = "회원가입 실패";
+		}
+		return msg;
 	}
 
 	@Override
-	public String showStudent() {
+	public String show() {
 		// 보기
-		return student.toString();
+		return null;
 		
 	}
 
 	@Override
-	public void updateStudent(String pw) {
+	public void update(String pw) {
 		// 수정
-		student.setPw(pw);
 	}
 
 	@Override
-	public String deleteStudent() {
+	public String delete() {
 		// 삭제
-		student = null;
-		return "정보를 삭제하였습니다";
+		return null;
 	}
 
 }
+
+/*
+ * String sqlCreate = "create table member("
+				+ "id varchar2(20) primary key,"
+				+ "pw varchar2(20),"
+				+ "name varchar2(20),"
+				+ "reg_date varchar2(20),"
+				+ "ssn varchar2(10)"
+				+ ")";
+		String sqlDrop = "drop table member";
+ * */

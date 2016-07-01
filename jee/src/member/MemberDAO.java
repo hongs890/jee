@@ -15,28 +15,19 @@ import global.Constants;
  * @story  :
  */
 
-/*
- * 	id varchar2(20) primary key,
-	pw varchar2(20),
-	name varchar2(20),
-	regDate int,
-	gender varchar2(20),
-	ssn int	
- * */
+
 public class MemberDAO {
-	public static void main(String[] args) {
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String sqlCreate = "create table member("
-				+ "id varchar2(20) primary key,"
-				+ "pw varchar2(20),"
-				+ "name varchar2(20),"
-				+ "reg_date varchar2(20),"
-				+ "ssn varchar2(10)"
-				+ ")";
-		String sqlDrop = "drop table member";
-		String sqlInsert ="";
+	Connection con = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+	private MemberDAO() {
+	}
+	public int exeUpdate(String sql) {
 		int updateResult = 0;
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
@@ -45,12 +36,21 @@ public class MemberDAO {
 					Constants.ORACLE_ID,
 					Constants.ORACLE_PW);
 			stmt = con.createStatement();
-			updateResult = stmt.executeUpdate(sqlCreate);
+			updateResult = stmt.executeUpdate(sql);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("DB다녀온 결과 : " + updateResult);
+		if (updateResult == 0) {
+			System.out.println("성공");
+		}else{
+			System.out.println("실패");
+		}
+		return updateResult;
+	}
+	
+	public void exeQuery(String sql){
+		
 	}
 }
