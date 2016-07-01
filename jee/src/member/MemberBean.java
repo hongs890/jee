@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class MemberBean {
 	private String id, pw, name, regDate, gender, ssn;
-	private int age;
+	private int birth;
 	
 	public MemberBean() {}
 	
@@ -37,22 +37,22 @@ public class MemberBean {
 		switch (genderResult%2) {
 			case 1: case 5:
 				ageResult0 = ageResult2-(1899+(ageResult1/10000));
-				this.age=ageResult0;
+				this.birth=ageResult0;
 				this.gender = "남";
 				break;
 			case 3: case 7:
 				ageResult0 = ageResult2-(1999+(ageResult1/10000));
-				this.age=ageResult0;
+				this.birth=ageResult0;
 				this.gender = "남";
 			break;
 			case 2: case 6:
 				ageResult0 = ageResult2-(1899+(ageResult1/10000));
-				this.age=ageResult0;
+				this.birth=ageResult0;
 				this.gender = "여";
 			break;
 			case 4: case 8:
 				ageResult0 = ageResult2-(1999+(ageResult1/10000));
-				this.age=ageResult0;
+				this.birth=ageResult0;
 				this.gender = "여";
 			break;
 			default:
@@ -89,8 +89,8 @@ public class MemberBean {
 	public String getSsn(){
 		return this.ssn;
 	}
-	public int getAge(){
-		return this.age;
+	public int getBirth(){
+		return this.birth;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -98,7 +98,7 @@ public class MemberBean {
 	@Override
 	public String toString() {
 		return "학생 [아이디=" + id + ", 비밀번호="+pw+", 이름=" + name + ", 등록일=" + regDate + ", 성별=" + gender
-				+ ", 주민번호=******-******* , 나이=" + age + "]";
+				+ ", 주민번호=******-******* , 나이=" + birth + "]";
 	}
 	
 	
