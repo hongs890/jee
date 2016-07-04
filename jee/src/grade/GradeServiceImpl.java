@@ -1,8 +1,68 @@
 package grade;
 
+import java.util.List;
+
 public class GradeServiceImpl implements GradeService{
 
-	GradeBean bean;
+	GradeDAO dao = GradeDAO.getInstance();
+	
+	private static GradeServiceImpl gradeImpl = new GradeServiceImpl();
+	private GradeServiceImpl() {}
+	public static GradeServiceImpl getGradeImpl() {
+		return gradeImpl;
+	}
+
+
+
+	@Override
+	public int insert(GradeBean grade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(GradeBean grade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(GradeBean grade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<GradeBean> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GradeBean> findByHakjum(String hakjum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GradeBean findBySeq(int seq) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	
+	
+	
+	
+	
+	/*GradeBean bean;
 	
 	@Override
 	public void regist(String name, int kor, int eng, int math) {
@@ -54,6 +114,6 @@ public class GradeServiceImpl implements GradeService{
 	@Override
 	public String Result() {
 		// 총결과 
-		return "총점 :"+outSum()+"평균 : "+outAver()+"학점 : "+outGrade();
-	}
+		return "총점 :"+outSum()+"평균 : "+outAver()+"학점 : "+outGrade();*/
+
 }

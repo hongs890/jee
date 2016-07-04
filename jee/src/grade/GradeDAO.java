@@ -23,16 +23,24 @@ import global.Constants;
 	this.math = math;
  * */
 public class GradeDAO {
-	public static void main(String[] args) {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
+		
+		private static GradeDAO instance = new GradeDAO();
+		private GradeDAO() {}
+		
+		public static GradeDAO getInstance() {
+			return instance;
+		}
+		
 		int updateResult = 0;
 		String sqlCreate = "create table grade("
 				+ "name varchar2(20),"
 				+ "kor int,"
 				+ "eng int,"
 				+ "math int)";
+		{
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			con = DriverManager.getConnection(
@@ -50,7 +58,6 @@ public class GradeDAO {
 			System.out.println("성공");
 		}else{
 			System.out.println("실패");
-		}
 	}
-
+}
 }

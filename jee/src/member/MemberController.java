@@ -23,7 +23,11 @@ public class MemberController {
 		
 		while (true) {
 			
-			switch (JOptionPane.showInputDialog(null, "1. 등록 2.보기 3.수정 4.삭제 0.종료")) {
+			switch (JOptionPane.showInputDialog(""
+					+ "=== 회원 전용화면 ===\n"
+					+ "1. 회원가입 2.로그인 3. 내정보보기 4.내정보수정(비밀번호) 5.탈퇴 0.종료\n"
+					+ "=== 관리자 화면 ===\n"
+					+ "11. 회원목록 12. 검색(ID) 13.검색(이름) 14.회원수(성별) 15.회원수")) {
 			case "1":	
 				MemberBean stu = new MemberBean();
 				String input = JOptionPane.showInputDialog("id,pw,name,ssn");
@@ -33,19 +37,38 @@ public class MemberController {
 				stu.setName(inputArr[2]);
 				stu.setSsn(inputArr[3]);
 				stu.setRegDate();
-				String result = service.regist(stu);
-				JOptionPane.showMessageDialog(null, result);
+				JOptionPane.showMessageDialog(null, service.regist(stu));
 				break;
 			case "2":	
 				JOptionPane.showMessageDialog(null,service.show());
 				break;
-			case "3":
-				String pw = JOptionPane.showInputDialog("변경하실 비밀번호를 입력하세요");
-				service.update(pw);
-				break;
 			case "4":
-				JOptionPane.showMessageDialog(null, service.delete());
+				MemberBean stu2 = new MemberBean();
+				String update = JOptionPane.showInputDialog("변경하실 아이디와 비밀번호를 입력하세요");
+				String[] updateArr = update.split(",");
+				stu2.setId(updateArr[0]);
+				stu2.setPw(updateArr[1]);
+				JOptionPane.showMessageDialog(null, service.update(stu2));
+				break;
+			case "5":
+				String result3 = service.delete(JOptionPane.showInputDialog("삭제하실 ID를 입력하세요"));
+				JOptionPane.showMessageDialog(null, service.delete(result3));
 				break; 
+			case "11": 
+				JOptionPane.showMessageDialog(null, service.list());
+				break;
+			case "12": 
+				String findID = JOptionPane.showInputDialog("검색하고자 하는 ID를 입력해주세요");
+				JOptionPane.showMessageDialog(null, service.findById(findID));
+				break;
+			case "13":
+				String findName = JOptionPane.showInputDialog("검색하고자 하는 이름을 입력해주세요");
+				JOptionPane.showMessageDialog(null, service.findByName(findName));
+			case "14": break;
+			case "15": 
+				int count = service.count();
+				JOptionPane.showMessageDialog(null, count);
+				break;
 			case"0":
 				return;
 			}

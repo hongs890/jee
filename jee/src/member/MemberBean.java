@@ -89,6 +89,11 @@ public class MemberBean {
 	public void setRegDate() {
 		this.regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 	}
+	
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	
 	public String getGender(){
 		return this.gender;
 	}
@@ -104,7 +109,7 @@ public class MemberBean {
 	@Override
 	public String toString() {
 		return "학생 [아이디=" + id + ", 비밀번호="+pw+", 이름=" + name + ", 등록일=" + regDate + ", 성별=" + gender
-				+ ", 주민번호=******-******* , 나이=" + birth + "]";
+				+ ", 주민번호=******-******* , 나이=" + birth + "]\n";
 	}
 	
 	

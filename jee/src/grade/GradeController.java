@@ -18,20 +18,20 @@ public class GradeController {
 	 * 해주세요. [단] switch-case 문으로 해결하세요.
 	 */
 	public static void main(String[] args) {
-		// ---------------------- 변수 선언부, 준비, 초기화(init) ------
-		GradeService service = new GradeServiceImpl();
-	
-		// -------------------------- 연산부 (알고리즘)------------------------------
+		GradeService service =  GradeServiceImpl.getGradeImpl();
+				
 		while (true) {
-			switch (JOptionPane.showInputDialog("1. 입력 2.조회 0.종료")) {
-			case "1":
-				String insert1 = JOptionPane.showInputDialog("이름,국어,영어,수학");
-				String[] insert2 = insert1.split(",");
-				service.regist(insert2[0], Integer.parseInt(insert2[1]), Integer.parseInt(insert2[2]), Integer.parseInt(insert2[3]));
+			switch (JOptionPane.showInputDialog(""
+					+ "1.추가\n2.수정\n3.삭제\n4.전체조회\n5.학점조회\n6.시퀀스조회\n7.응시생수\n0.종료")) {
+			case "1": 
+				
 				break;
-			case "2":
-				JOptionPane.showMessageDialog(null, service.Result());
-				break;
+			case "2": break;
+			case "3": break;
+			case "4": break;
+			case "5": break;
+			case "6": break;
+			case "7": break;
 			case "0":return;
 			}
 		}

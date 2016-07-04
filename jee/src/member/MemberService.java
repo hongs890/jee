@@ -3,6 +3,8 @@
  */
 package member;
 
+import java.util.List;
+
 /**
  * @date  : 2016. 6. 17.
  * @author: 배근홍
@@ -12,6 +14,10 @@ package member;
 public interface MemberService {
 	public String regist(MemberBean mem);
 	public String show();
-	public void update(String pw);
-	public String delete();
+	public String update(MemberBean mem);
+	public String delete(String id);
+	public MemberBean findById(String id);
+	public List<MemberBean> list();
+	public List<MemberBean> findByName(String findName);
+	public int count();
 }

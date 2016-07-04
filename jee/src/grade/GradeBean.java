@@ -1,48 +1,48 @@
 package grade;
 
 public class GradeBean {
-	private int kor, eng, math;
-	private String grade, name;
-	
-	public GradeBean(String name, int kor, int eng, int math) {
-	this.name = name;
-	this.kor = kor;
-	this.eng = eng;
-	this.math = math;
-	}
-	
-	
-	public void setKor(int kor){
-		this.kor = kor;
-	}
-	public void setEng(int eng){
-		this.eng = eng;
-	}
-	public void setMath(int math){
-		this.math = math;
-	}
-	
-	public void setGrade(String grade){
-		this.grade = grade;
-	}
-	public void setName(String name){
-		this.name = name;
-	}
-//-----------------------------------------------------
-	public int getKor(){
+	private int kor, eng, math, seq;
+	private String hakjum, name;
+	public int getKor() {
 		return kor;
 	}
-	public int getEng(){
+	public void setKor(int kor) {
+		this.kor = kor;
+	}
+	public int getEng() {
 		return eng;
 	}
-	public int getMath(){
+	public void setEng(int eng) {
+		this.eng = eng;
+	}
+	public int getMath() {
 		return math;
 	}
-	public String getGrade(){
-		return grade;
+	public void setMath(int math) {
+		this.math = math;
 	}
-	public String getName(){
-		return name; 
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+	public String getHakjum() {
+		return hakjum;
+	}
+	public void setHakjum(String hakjum) {
+		this.hakjum = hakjum;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "GradeBean [kor=" + kor + ", eng=" + eng + ", math=" + math + ", seq=" + seq + ", hakjum=" + hakjum
+				+ ", name=" + name + "]";
 	}
 	
 	
