@@ -1,50 +1,90 @@
 package grade;
 
 public class GradeBean {
-	private int kor, eng, math, seq;
-	private String hakjum, name;
-	public int getKor() {
-		return kor;
+	private String id, grade,seq,examDate,type,score;
+	private int java, sql, html, javascript;
+	
+	public String getType() {
+		return type;
 	}
-	public void setKor(int kor) {
-		this.kor = kor;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	public int getEng() {
-		return eng;
+
+	public String getScore() {
+		return score;
 	}
-	public void setEng(int eng) {
-		this.eng = eng;
+
+	public void setScore(String score) {
+		this.score = score;
 	}
-	public int getMath() {
-		return math;
+
+	public GradeBean() {}
+	
+	public GradeBean(String seq, String grade, int java, int sql, int html, int javascript, String id, String examDate){
+		this.seq = seq;
+		this.grade = grade;
+		this.java = java;
+		this.sql = sql;
+		this.html = html;
+		this.javascript = javascript;
+		this.id = id;
+		this.examDate = examDate;
 	}
-	public void setMath(int math) {
-		this.math = math;
+	
+	public String getExamDate() {
+		return examDate;
 	}
-	public int getSeq() {
+	public void setExamDate(String examDate) {
+		this.examDate = examDate;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(int seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public String getHakjum() {
-		return hakjum;
+	public int getJava() {
+		return java;
 	}
-	public void setHakjum(String hakjum) {
-		this.hakjum = hakjum;
+	public void setJava(int java) {
+		this.java = java;
 	}
-	public String getName() {
-		return name;
+	public int getSql() {
+		return sql;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSql(int sql) {
+		this.sql = sql;
+	}
+	public int getHtml() {
+		return html;
+	}
+	public void setHtml(int html) {
+		this.html = html;
+	}
+	public int getJavascript() {
+		return javascript;
+	}
+	public void setJavascript(int javascript) {
+		this.javascript = javascript;
 	}
 	@Override
 	public String toString() {
-		return "GradeBean [kor=" + kor + ", eng=" + eng + ", math=" + math + ", seq=" + seq + ", hakjum=" + hakjum
-				+ ", name=" + name + "]";
+		return "성적표 [No." + seq + " ID : " + id + ", 학점 : " + grade + ","
+				+ " 자바 : " + java + ", SQL : " + sql
+				+ ", HTML5 : " + html + ", 자바스크립트 : " + javascript + ", 날짜 : "+examDate+"]\n";
 	}
-	
-	
-	
 }

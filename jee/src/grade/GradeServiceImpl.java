@@ -1,5 +1,6 @@
 package grade;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class GradeServiceImpl implements GradeService{
@@ -15,105 +16,82 @@ public class GradeServiceImpl implements GradeService{
 
 
 	@Override
-	public int insert(GradeBean grade) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String insert(GradeBean grade) {
+		String insert = "";
+		
+		int sum = grade.getJava() + grade.getSql() + grade.getHtml() + grade.getJavascript();
+		int ave = sum / 3;
+		String gradeRank ="";
+	
+		switch (ave/10) {
+		case 9:	gradeRank = "A";break;
+		case 8:	gradeRank = "B";break;
+		case 7:	gradeRank = "C";break;
+		case 6:	gradeRank = "D";break;
+		case 5:	gradeRank = "F";break;
+		}
+		grade.setGrade(gradeRank);
+		if (dao.insert(grade) == 1) {
+			insert ="시험점수 등록이 성공하였습니다";
+		}else{
+			insert = "실패하였습니다";
+		}
+		System.out.println("test : "+grade.toString());
+		return insert;
 	}
 
 	@Override
-	public int update(GradeBean grade) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String update(GradeBean grade) {
+		String update = "";
+		if (dao.update(grade) == 1) {
+			update ="성공";
+		}else{
+			update ="실패";
+		}
+		int sum = grade.getJava() + grade.getSql() + grade.getHtml() + grade.getJavascript();
+		int ave = sum / 3;
+		String gradeRank ="";
+	
+		switch (ave/10) {
+		case 9:	gradeRank = "A";break;
+		case 8:	gradeRank = "B";break;
+		case 7:	gradeRank = "C";break;
+		case 6:	gradeRank = "D";break;
+		case 5:	gradeRank = "F";break;
+		}
+		grade.setGrade(gradeRank);
+		
+		return update;
 	}
 
 	@Override
-	public int delete(GradeBean grade) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String delete(String delete) {
+		String result ="";
+		if (dao.delete(delete) == 1) {
+			result ="삭제 성공";
+		}else {
+			result ="삭제 실패";
+		}
+		return result;
 	}
 
 	@Override
 	public List<GradeBean> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.list();
 	}
 
 	@Override
-	public List<GradeBean> findByHakjum(String hakjum) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<GradeBean> findByID(String id) {
+		return dao.findByID(id);
 	}
 
 	@Override
 	public GradeBean findBySeq(int seq) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findBySeq(seq);
 	}
 
 	@Override
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int count(String findByCount) {
+		return dao.count(findByCount);
 	}
-
-	
-	
-	
-	
-	
-	
-	/*GradeBean bean;
-	
-	@Override
-	public void regist(String name, int kor, int eng, int math) {
-		// 이름, 국어, 영어, 수학 
-		bean = new GradeBean(name, kor, eng, math);
-		if (bean.getKor() >= 100 || bean.getEng() >= 100 || bean.getMath() >= 100 || bean.getKor() < 0 || bean.getEng() < 0 || bean.getMath() < 0) {
-			String error = "점수는 100점까지만 입력해주세요";
-		}
-	}
-
-	@Override
-	public int outSum() {
-		// 합계
-		return  bean.getKor() + bean.getEng() + bean.getMath();
-	}
-
-	
-	@Override
-	public int outAver() {
-		// 평균
-		return (outSum() / 3);
-	}
-
-	
-	@Override
-	public String outGrade() {
-		// 등급
-		String grade ="";
-		switch (outAver()/ 10) {
-		case 9:
-			grade = "A";
-			break;
-		case 8:
-			grade = "B";
-			break;
-		case 7:
-			grade = "C";
-			break;
-		case 6:
-			grade = "D";
-			break;
-		case 5:
-			grade = "E";
-			break;
-		}
-		return grade;
-	}
-
-	@Override
-	public String Result() {
-		// 총결과 
-		return "총점 :"+outSum()+"평균 : "+outAver()+"학점 : "+outGrade();*/
-
 }

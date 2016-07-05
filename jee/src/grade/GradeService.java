@@ -1,17 +1,17 @@
 package grade;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface GradeService {
 	// 총 7개의 기본 패턴이 존재
 	// exeU
 	
-	public int insert(GradeBean grade);
-	public int update(GradeBean grade);
-	public int delete(GradeBean grade); // 아이디와 비밀번호가 일치해야 삭제됨
-	// exeQ
+	public String insert(GradeBean grade);
+	public String update(GradeBean grade);
+	public String delete(String delete); 
 	public List<GradeBean> list();
-	public List<GradeBean> findByHakjum(String hakjum);
+	public List<GradeBean> findByID(String id);
 	public GradeBean findBySeq(int seq);
-	public int count ();
+	public int count (String findByDate);
 }
