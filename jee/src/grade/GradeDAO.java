@@ -2,6 +2,7 @@ package grade;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import global.Constants;
+import global.Database;
+import global.DatabaseFactory;
+import global.Vendor;
 
 /**
  * @date  : 2016. 7. 1.
@@ -28,28 +32,57 @@ public class GradeDAO {
 		Connection con;
 		Statement stmt;
 		ResultSet rs;
-		
+		PreparedStatement pstmt;
 		private static GradeDAO instance = new GradeDAO();
-		private GradeDAO() {}
+		private GradeDAO() {
+			con = DatabaseFactory.createDatabase(Vendor.ORACLE, 
+					Constants.USER_ID, 
+					Constants.USER_PW).getConnection();
+		}
 		
 		public static GradeDAO getInstance() {
 			return instance;
 		}
 	// 생성
 	public int insert(GradeBean grade) {
+		int result = 0;
 		String sql = "insert into grade(seq, grade, java, sql, html, javascript, id, exam_date)"
-	+ "values(seq.nextval,'"+grade.getGrade()+"',"+ grade.getJava()+","
-				+grade.getSql()+","+ grade.getHtml() + "," 
-				+ grade.getJavascript() + ", '" + grade.getId() +"','"
-				+grade.getExamDate()+"')";
-		return this.exeUpdate(sql);
+	+ "values(seq.nextval,?,?,?,?,?,?,?)";
+		try {
+			Class.forName(Constants.ORACLE_DRIVER);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, grade.getGrade());
+			pstmt.setInt(2, grade.getJava());
+			pstmt.setInt(3, grade.getSql());
+			pstmt.setInt(4, grade.getHtml());
+			pstmt.setInt(5, grade.getJavascript());
+			pstmt.setString(6, grade.getId());
+			pstmt.setString(7, grade.getExamDate());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 	// 수정
 	public int update(GradeBean grade){
 		String sql = "update grade set "+grade.getType()+" = "+Integer.parseInt(grade.getScore())+" where seq = "+Integer.parseInt(grade.getSeq())+"";
-		String sql2 = "update grade set grade = "+null+" where seq = "+grade.getSeq()+"";
-		this.exeUpdate(sql2);
-		return this.exeUpdate(sql);
+		this.exeUpdate(sql);
+		grade = findBySeq(Integer.parseInt(grade.getSeq()));
+		int sum = grade.getHtml() + grade.getJava() + grade.getJavascript() + grade.getSql();
+		int ave = sum / 4;
+		String gradeRank="";
+		switch (ave/10) {
+		case 9:	gradeRank = "A";break;
+		case 8:	gradeRank = "B";break;
+		case 7:	gradeRank = "C";break;
+		case 6:	gradeRank = "D";break;
+		case 5:	gradeRank = "F";break;
+		}
+		grade.setGrade(gradeRank);
+		String sql2 = "update grade set grade = '"+grade.getGrade()+"' where seq = "+grade.getSeq()+"";
+		return this.exeUpdate(sql2);
 	}
 	
 	
@@ -63,8 +96,8 @@ public class GradeDAO {
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			con = DriverManager.getConnection(Constants.ORACLE_URL, 
-										Constants.ORACLE_ID, 
-										Constants.ORACLE_PW);
+										Constants.USER_ID, 
+										Constants.USER_PW);
 			stmt = con.createStatement();
 			result = stmt.executeUpdate(sql);
 		} catch (Exception e) {
@@ -84,8 +117,8 @@ public class GradeDAO {
 		List<GradeBean> list = new ArrayList<GradeBean>();
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.ORACLE_ID,
-					Constants.ORACLE_PW);
+			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID,
+					Constants.USER_PW);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -107,7 +140,7 @@ public class GradeDAO {
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			con = DriverManager.getConnection(Constants.ORACLE_URL,
-					Constants.ORACLE_ID, Constants.ORACLE_PW);
+					Constants.USER_ID, Constants.USER_PW);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 				if (rs.next()) {
@@ -127,7 +160,7 @@ public class GradeDAO {
 		try {
 			Class.forName(Constants.ORACLE_DRIVER);
 			con = DriverManager.getConnection(Constants.ORACLE_URL,
-					Constants.ORACLE_ID, Constants.ORACLE_PW);
+					Constants.USER_ID, Constants.USER_PW);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -149,7 +182,7 @@ public class GradeDAO {
 			try {
 				Class.forName(Constants.ORACLE_DRIVER);
 				con = DriverManager.getConnection(Constants.ORACLE_URL,
-						Constants.ORACLE_ID, Constants.ORACLE_PW);
+						Constants.USER_ID, Constants.USER_PW);
 				stmt = con.createStatement();
 				rs = stmt.executeQuery(sql);
 				if (rs.next()) {

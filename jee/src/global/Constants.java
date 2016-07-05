@@ -14,6 +14,8 @@ public class Constants {
 	public final static String BANK_NAME="한빛은행";
 	public final static String ORACLE_DRIVER ="oracle.jdbc.driver.OracleDriver";
 	public final static String ORACLE_URL ="jdbc:oracle:thin:@localhost:1521:xe";
-	public final static String ORACLE_ID ="hongs";
-	public final static String ORACLE_PW ="hongs";
+	public final static String MYSQL_DRIVER ="";
+	public final static String MYSQL_URL ="";
+	public final static String USER_ID ="hongs";
+	public final static String USER_PW ="hongs";
 }

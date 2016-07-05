@@ -20,7 +20,7 @@ public class GradeServiceImpl implements GradeService{
 		String insert = "";
 		
 		int sum = grade.getJava() + grade.getSql() + grade.getHtml() + grade.getJavascript();
-		int ave = sum / 3;
+		int ave = sum / 4;
 		String gradeRank ="";
 	
 		switch (ave/10) {
@@ -36,7 +36,6 @@ public class GradeServiceImpl implements GradeService{
 		}else{
 			insert = "실패하였습니다";
 		}
-		System.out.println("test : "+grade.toString());
 		return insert;
 	}
 
@@ -48,19 +47,6 @@ public class GradeServiceImpl implements GradeService{
 		}else{
 			update ="실패";
 		}
-		int sum = grade.getJava() + grade.getSql() + grade.getHtml() + grade.getJavascript();
-		int ave = sum / 3;
-		String gradeRank ="";
-	
-		switch (ave/10) {
-		case 9:	gradeRank = "A";break;
-		case 8:	gradeRank = "B";break;
-		case 7:	gradeRank = "C";break;
-		case 6:	gradeRank = "D";break;
-		case 5:	gradeRank = "F";break;
-		}
-		grade.setGrade(gradeRank);
-		
 		return update;
 	}
 
