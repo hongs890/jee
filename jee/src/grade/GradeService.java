@@ -14,4 +14,5 @@ public interface GradeService {
 	public List<GradeBean> findByID(String id);
 	public GradeBean findBySeq(int seq);
 	public int count (String findByDate);
+	public String GradeCal(GradeBean grade);
 }

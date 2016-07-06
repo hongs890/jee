@@ -2,9 +2,7 @@ package grade;
 
 import java.awt.HeadlessException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
-import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,7 +52,7 @@ public class GradeController {
 				JOptionPane.showMessageDialog(null, service.delete(delete));
 				break;
 			case "4": 
-				JOptionPane.showMessageDialog(null, service.list());
+				GradeUI ui = new GradeUI();
 				break;
 			case "5": 
 				String findBySq = JOptionPane.showInputDialog("조회하실 Seq.no를 입력하세요");
@@ -65,7 +63,7 @@ public class GradeController {
 				JOptionPane.showMessageDialog(null, service.findByID(findByName));
 				break;
 			case "7": 
-				String findByDate = JOptionPane.showInputDialog("조회하실 등록일자를 입력하세요");
+				String findByDate = JOptionPane.showInputDialog("조회하실 등록일자를 입력하세요 (예 : 2016-05)");
 				JOptionPane.showMessageDialog(null, "등록된 응시생 수 :" + service.count(findByDate));
 				break;
 			case "0":return;

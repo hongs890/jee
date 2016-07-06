@@ -13,16 +13,11 @@ public class GradeServiceImpl implements GradeService{
 		return gradeImpl;
 	}
 
-
-
 	@Override
-	public String insert(GradeBean grade) {
-		String insert = "";
-		
+	public String GradeCal(GradeBean grade) {
+		String gradeRank ="";
 		int sum = grade.getJava() + grade.getSql() + grade.getHtml() + grade.getJavascript();
 		int ave = sum / 4;
-		String gradeRank ="";
-	
 		switch (ave/10) {
 		case 9:	gradeRank = "A";break;
 		case 8:	gradeRank = "B";break;
@@ -30,7 +25,14 @@ public class GradeServiceImpl implements GradeService{
 		case 6:	gradeRank = "D";break;
 		case 5:	gradeRank = "F";break;
 		}
-		grade.setGrade(gradeRank);
+		return gradeRank;
+	}
+	
+	
+	@Override
+	public String insert(GradeBean grade) {
+		String insert = "";
+		grade.setGrade(this.GradeCal(grade));
 		if (dao.insert(grade) == 1) {
 			insert ="시험점수 등록이 성공하였습니다";
 		}else{
@@ -71,6 +73,7 @@ public class GradeServiceImpl implements GradeService{
 		return dao.findByID(id);
 	}
 
+	
 	@Override
 	public GradeBean findBySeq(int seq) {
 		return dao.findBySeq(seq);
@@ -80,4 +83,5 @@ public class GradeServiceImpl implements GradeService{
 	public int count(String findByCount) {
 		return dao.count(findByCount);
 	}
+
 }

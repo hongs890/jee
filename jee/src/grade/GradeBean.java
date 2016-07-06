@@ -20,19 +20,6 @@ public class GradeBean {
 		this.score = score;
 	}
 
-	public GradeBean() {}
-	
-	public GradeBean(String seq, String grade, int java, int sql, int html, int javascript, String id, String examDate){
-		this.seq = seq;
-		this.grade = grade;
-		this.java = java;
-		this.sql = sql;
-		this.html = html;
-		this.javascript = javascript;
-		this.id = id;
-		this.examDate = examDate;
-	}
-	
 	public String getExamDate() {
 		return examDate;
 	}
