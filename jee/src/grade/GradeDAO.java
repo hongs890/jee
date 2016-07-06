@@ -48,7 +48,6 @@ public class GradeDAO {
 		String sql = "insert into grade(seq, grade, java, sql, html, javascript, id, exam_date)"
 	+ "values(seq.nextval,?,?,?,?,?,?,?)";
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, grade.getGrade());
 			pstmt.setInt(2, grade.getJava());

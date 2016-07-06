@@ -36,3 +36,39 @@ update grade set exam_date = '2016-05'
 where seq = 1020;
 -- delete : delete
 delete from grade where seq = '1020';
+
+-----------------------------------------
+-- view 권한주기 
+-- sqlplus system/"비번"
+-- grant dba to hongs;
+-- commit;
+-----------------------------------------
+
+create view grade_view
+as select * from grade;
+
+select * from grade_view;
+
+drop view grade_view;
+
+-- join 조인 // 실제로 존재하지 않는다.
+create view grade_member as
+select  
+	g.seq as seq,
+	g.grade as grade,
+	g.java as java,
+	g.sql as sql,
+	g.html as html,
+	g.javascript as js,
+	g.exam_date as exam_date,
+	m.id as id,
+	m.pw as pw,
+	m.name as name,
+	m.reg_date as reg_date,
+	m.ssn as ssn
+from member m,grade g
+where m.id = g.id;
+
+select * from grade_member;
+
+

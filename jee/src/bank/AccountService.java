@@ -3,6 +3,9 @@
  */
 package bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @date  : 2016. 6. 20.
  * @author: 배근홍
@@ -13,16 +16,23 @@ public interface AccountService {
 	//1.개설 2.입금 3.조회 4.출금 5.통장내역보기
 	
 	// 1개설
-	public abstract void openAccount(int accountNo, String name, String id, String pw);
+	public String openAccount(AccountBean acc);
 	// 2입금
-	public void deposit(int inputMoney);
-	// 3조회
-	public void findAccount();
-	// 4출금
-	public String withdraw(int output);
-	// 5통장내역보기
-	public String showAccount();
-	// 6해지
-	public String deleteAccount();
+	public String deposit(String account, String inputMoney);
+	// 3출금
+	public String withdraw(String account, String withdrawMoney);
+	// 4수정.. 사용자의 요청에 의해 비밀번호만 변경가능
+	public String updateAccount(AccountBean acc);
+	// 5해지
+	public String deleteAccount(String delete);
+	// 6조회 (전체)
+	public ArrayList<AccountBean> findAccount(); // 뷰로 받아야 한다. 
+	// 7조회 (계좌번호)
+	public AccountBean findByAccountNo(String account);
+	// 8조회 (이름)
+	public List<AccountBean> findByName(String name);
+	// 9조회 (전체통장수)
+	public int count();
+	
 }
 

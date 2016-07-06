@@ -3,6 +3,9 @@
  */
 package bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @date  : 2016. 6. 20.
  * @author: 배근홍
@@ -10,52 +13,70 @@ package bank;
  * @story : 계좌 인터페이스
  */
 public class AccountServiceImpl implements AccountService {
-	//1.개설 2.입금 3.조회 4.출금 5.통장내역보기
-		AccountBean account;
-	
-	@Override
-	public void openAccount(int accountNo, String name, String id, String pw) {
-		// 1 개설
-		account = new AccountBean(accountNo, name,id,pw);
+	AccountDAO dao = AccountDAO.getDao();
+	private static AccountServiceImpl instence = new AccountServiceImpl();
+	public static AccountServiceImpl getInstence() {
+		return instence;
 	}
+	private AccountServiceImpl() {}
 
 	@Override
-	public void deposit(int inputMoney) {
-		// 2입금
-		int money = account.getMoney();
-		money += inputMoney;
-		account.setMoney(money);
-		
-	}
-
-	@Override
-	public void findAccount() {
-		// 3조회
-	}
-
-	@Override
-	public String withdraw(int output) {
-		//4출금
-		String result = "잔액부족";
-		int money = account.getMoney();
-		if (output <= money) {
-			money -= output;
-			account.setMoney(money);
-			result = String.valueOf(account.getMoney());
+	public String openAccount(AccountBean acc) {
+		String result = "";
+		acc.setAccountNo((int) (Math.random()*999999)+100000);
+		if (dao.openAccount(acc) == 1) {
+			result = "계좌 개설에 성공하였습니다";
+		}else {
+			result = "계좌 개설에 실패하였습니다";
 		}
 		return result;
 	}
 
 	@Override
-	public String showAccount() {
-		// 5통장내역보기
-		return account.toString();
+	public String deposit(String account, String inputMoney) {
+		return String.valueOf(dao.deposit(account, inputMoney));
 	}
 
 	@Override
-	public String deleteAccount() {
-		// 6해지
-		account = null;
-		return "해지되었습니다";
+	public String withdraw(String account, String withdrawMoney) {
+
+		return null;
 	}
+
+	@Override
+	public String updateAccount(AccountBean acc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteAccount(String delete) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<AccountBean> findAccount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AccountBean findByAccountNo(String account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AccountBean> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
