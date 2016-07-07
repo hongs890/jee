@@ -22,7 +22,7 @@ public interface AccountService {
 	// 3출금
 	public String withdraw(String account, String withdrawMoney);
 	// 4수정.. 사용자의 요청에 의해 비밀번호만 변경가능
-	public String updateAccount(AccountBean acc);
+	public String updateAccount(AccountMemberBean acc);
 	// 5해지
 	public String deleteAccount(String delete);
 	// 6조회 (전체)

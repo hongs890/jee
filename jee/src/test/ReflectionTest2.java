@@ -14,7 +14,6 @@ public class ReflectionTest2 {
 			AccountBean ab = (AccountBean) Class.forName("bank.AccountBean").newInstance();
 			ab.setId("hong");
 			ab.setMoney(500);
-			ab.setPw("1");
 			System.out.println(ab.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

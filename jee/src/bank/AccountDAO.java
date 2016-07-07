@@ -19,11 +19,9 @@ import global.Vendor;
  * @story  :
  */
 public class AccountDAO {
-	Connection con;
-	Statement stmt;
-	ResultSet rs;
-	PreparedStatement pstmt;
-	
+	private Connection con;
+	private ResultSet rs;
+	private PreparedStatement pstmt;
 	
 	private static AccountDAO dao = new AccountDAO();
 	public static AccountDAO getDao() {
@@ -58,8 +56,8 @@ public class AccountDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(money));
 			pstmt.setInt(2, Integer.parseInt(accountNo));
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -69,7 +67,7 @@ public class AccountDAO {
 	//3번
 	public int withDraw (String account, String withdrawMoney){
 		int result = 0;
-		String sql = "update bank set money = ? where account_no = ?";
+		String sql = "update bank set money = money - ? where account_no = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(withdrawMoney));
@@ -83,9 +81,9 @@ public class AccountDAO {
 		return result;
 	}
 	//4번 
-	public int updateAccount(AccountBean acc){
+	public int updateAccount(AccountMemberBean acc){
 		int result = 0;
-		String sql = "update bank_member set pw = ? where id = ?";
+		String sql = "update member set pw = ? where id = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, acc.getPw());
@@ -102,7 +100,7 @@ public class AccountDAO {
 	//5번
 	public int deleteAccount(String delete){
 		int result = 0;
-		String sql = "delete from bank_member where account = ?";
+		String sql = "delete from member where id = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, delete);

@@ -15,7 +15,7 @@ import global.Constants;
  */
 public class AccountBean {
 	private int accountNo, money; 
-	private String pw, id;
+	private String id;
 	
 	public int getAccountNo() {
 		return accountNo;
@@ -28,12 +28,6 @@ public class AccountBean {
 	}
 	public void setMoney(int money) {
 		this.money = money;
-	}
-	public String getPw() {
-		return pw;
-	}
-	public void setPw(String pw) {
-		this.pw = pw;
 	}
 	public String getId() {
 		return id;
