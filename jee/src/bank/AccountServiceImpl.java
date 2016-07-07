@@ -33,50 +33,50 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public String deposit(String account, String inputMoney) {
-		return String.valueOf(dao.deposit(account, inputMoney));
+	public String deposit(String accountNo, String money) {
+		return String.valueOf(dao.deposit(accountNo, money));
 	}
 
 	@Override
 	public String withdraw(String account, String withdrawMoney) {
-
-		return null;
+		String result = "";
+		if (Integer.parseInt(withdrawMoney) > dao.findByAcc(Integer.parseInt(account)).getMoney()) {
+			result = "잔고가 부족합니다";
+		}else {
+			result = String.valueOf(dao.withDraw(account, withdrawMoney));
+		}
+		return result;
 	}
 
 	@Override
 	public String updateAccount(AccountBean acc) {
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(dao.updateAccount(acc));
 	}
 
 	@Override
 	public String deleteAccount(String delete) {
 		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(dao.deleteAccount(delete));
 	}
 
 	@Override
-	public ArrayList<AccountBean> findAccount() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AccountMemberBean> findAccount() {
+		return dao.findAccount();
 	}
 
 	@Override
-	public AccountBean findByAccountNo(String account) {
-		// TODO Auto-generated method stub
-		return null;
+	public AccountMemberBean findByAccountNo(int account) {
+		return dao.findByAcc(account);
 	}
 
 	@Override
-	public List<AccountBean> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AccountMemberBean> findByName(String name) {
+		return dao.findByName(name);
 	}
 
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.count();
 	}
 	
 }

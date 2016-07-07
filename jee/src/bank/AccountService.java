@@ -18,7 +18,7 @@ public interface AccountService {
 	// 1개설
 	public String openAccount(AccountBean acc);
 	// 2입금
-	public String deposit(String account, String inputMoney);
+	public String deposit(String accountNo, String money);
 	// 3출금
 	public String withdraw(String account, String withdrawMoney);
 	// 4수정.. 사용자의 요청에 의해 비밀번호만 변경가능
@@ -26,11 +26,11 @@ public interface AccountService {
 	// 5해지
 	public String deleteAccount(String delete);
 	// 6조회 (전체)
-	public ArrayList<AccountBean> findAccount(); // 뷰로 받아야 한다. 
+	public List<AccountMemberBean> findAccount(); // 뷰로 받아야 한다. 
 	// 7조회 (계좌번호)
-	public AccountBean findByAccountNo(String account);
+	public AccountMemberBean findByAccountNo(int account);
 	// 8조회 (이름)
-	public List<AccountBean> findByName(String name);
+	public List<AccountMemberBean> findByName(String name);
 	// 9조회 (전체통장수)
 	public int count();
 	
