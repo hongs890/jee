@@ -1,6 +1,7 @@
 package member;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @date  : 2016. 6. 20.
@@ -32,12 +33,7 @@ public class MemberServiceImpl implements MemberService {
 		return msg;
 	}
 
-	@Override
-	public String show() {
-		// 보기
-		return null;
-		
-	}
+	
 
 	@Override
 	public String update(MemberBean mem) {
@@ -72,24 +68,24 @@ public class MemberServiceImpl implements MemberService {
 		
 		return temp;
 	}
-	public List<MemberBean> list() {
+	public List<?> list() {
 		// TODO Auto-generated method stub
 		return dao.list();
 	}
-	public List<MemberBean> findByName(String findName) {
+	public List<?> findByName(String findName) {
 		// TODO Auto-generated method stub
 		return dao.findByName(findName);
+	}
+	@Override
+	public List<?> findBy(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Map<?, ?> map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
 
-/*
- * String sqlCreate = "create table member("
-				+ "id varchar2(20) primary key,"
-				+ "pw varchar2(20),"
-				+ "name varchar2(20),"
-				+ "reg_date varchar2(20),"
-				+ "ssn varchar2(10)"
-				+ ")";
-		String sqlDrop = "drop table member";
- * */

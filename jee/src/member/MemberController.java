@@ -40,7 +40,6 @@ public class MemberController {
 				JOptionPane.showMessageDialog(null, service.regist(stu));
 				break;
 			case "2":	
-				JOptionPane.showMessageDialog(null,service.show());
 				break;
 			case "4":
 				MemberBean stu2 = new MemberBean();

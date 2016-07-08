@@ -66,7 +66,7 @@ public class MemberDAO {
 	}
 
 	// list
-	public List<MemberBean> list() {
+	public List<?> list() {
 		String sql = "select * from member";
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		try {
@@ -110,7 +110,7 @@ public class MemberDAO {
 	}
 
 	// findByNotPK
-	public List<MemberBean> findByName(String name) {
+	public List<?> findByName(String name) {
 		String sql = "select * from member where name = '"+name+"'";
 		List<MemberBean> list2 = new ArrayList<MemberBean>();
 		try {

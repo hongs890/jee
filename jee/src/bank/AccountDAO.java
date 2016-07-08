@@ -100,7 +100,7 @@ public class AccountDAO {
 	//5번
 	public int deleteAccount(String delete){
 		int result = 0;
-		String sql = "delete from member where id = ?";
+		String sql = "delete from bank where account_no = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, delete);
@@ -112,9 +112,9 @@ public class AccountDAO {
 		return result;
 	}
 	//6번
-	public List<AccountMemberBean> findAccount (){
+	public List<?> findAccount (){
 		List<AccountMemberBean> list = new ArrayList<AccountMemberBean>();
-		String sql = "select * from bank_member";
+		String sql = "select account, money, id, name, ssn from bank_member order by name";
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -123,10 +123,8 @@ public class AccountDAO {
 				bean.setAccountNo(rs.getInt("ACCOUNT"));
 				bean.setMoney(rs.getInt("MONEY"));
 				bean.setId(rs.getString("ID"));
-				bean.setPw(rs.getString("PW"));
 				bean.setName(rs.getString("NAME"));
-				bean.setRegDate(rs.getString("REG_DATE"));
-				bean.setSsn(rs.getString("SSN"));
+				bean.setSsn(rs.getString("SSN").substring(0, 6));
 				list.add(bean);
 			}
 		} catch (Exception e) {
@@ -161,7 +159,7 @@ public class AccountDAO {
 		return result ;
 	}
 	//8번
-	public List<AccountMemberBean> findByName(String name){
+	public List<?> findByName(String name){
 		List<AccountMemberBean> list = new ArrayList<AccountMemberBean>();
 		String sql = "select * from bank_member where name = ?";
 		try {
@@ -179,7 +177,7 @@ public class AccountDAO {
 				bean.setSsn(rs.getString("SSN"));
 				list.add(bean);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -5,6 +5,7 @@ package bank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @date  : 2016. 6. 20.
@@ -56,23 +57,32 @@ public class AccountServiceImpl implements AccountService {
 		String result = "";
 		if (dao.deleteAccount(delete) == 1) {
 			result ="삭제 성공";
+		}else{
+			result ="삭제 실패";
 		}
 		return result;
 	}
 	@Override
-	public List<AccountMemberBean> findAccount() {
-		return dao.findAccount();
+	public List<?> list() {
+		List<?> list = dao.findAccount();
+		
+		return list;
 	}
 	@Override
 	public AccountMemberBean findByAccountNo(int account) {
 		return dao.findByAcc(account);
 	}
 	@Override
-	public List<AccountMemberBean> findByName(String name) {
+	public List<?> findBy(String name) {
 		return dao.findByName(name);
 	}
 	@Override
 	public int count() {
 		return dao.count();
+	}
+	@Override
+	public Map<?, ?> map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

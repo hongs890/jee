@@ -21,9 +21,7 @@ import global.Constants;
  * @file  : BankContorller.java
  * @story :
  */
-/*switch (JOptionPane.showInputDialog("\n3.출금
- * 
- */
+
 
 public class AccountController {
 	public static void main(String[] args) {
@@ -56,11 +54,12 @@ public class AccountController {
 				JOptionPane.showMessageDialog(null, service.updateAccount(bean3));
 				break;
 			case "5":
-				String delete = JOptionPane.showInputDialog("삭제하실 ID를 입력해주세요");
+				String delete = JOptionPane.showInputDialog("삭제하실 계좌번호를 입력해주세요");
 				JOptionPane.showMessageDialog(null, service.deleteAccount(delete));
 				break;
 			case "6":
-				JOptionPane.showMessageDialog(null, service.findAccount());
+				/*JOptionPane.showMessageDialog(null, service.findAccount());*/
+				BankUI ui = new BankUI();
 				break;
 			case "7":
 				String findByAccount = JOptionPane.showInputDialog("조회하실 계좌번호를 입력해주세요");
@@ -68,7 +67,7 @@ public class AccountController {
 				break;
 			case "8":
 				String findByName = JOptionPane.showInputDialog("조회하실 이름을 입력해주세요");
-				JOptionPane.showMessageDialog(null, service.findByName(findByName));
+				JOptionPane.showMessageDialog(null, service.findBy(findByName));
 				break;
 			case "9":
 				JOptionPane.showMessageDialog(null, "전체 통장 수는" + service.count()+"개 입니다.");

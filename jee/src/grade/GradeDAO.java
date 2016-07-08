@@ -118,7 +118,7 @@ public class GradeDAO {
 		}
 		return result;
 	}
-	public List<GradeBean> list() {
+	public List<?> list() {
 		List<GradeBean> list = new ArrayList<GradeBean>();
 		String sql = "select * from grade";
 		try {
@@ -169,7 +169,7 @@ public class GradeDAO {
 		return temp;
 	}
 	
-	public List<GradeBean> findByID(String id) {
+	public List<?> findByID(String id) {
 		List<GradeBean> list = new ArrayList<GradeBean>();
 		String sql = "select * from grade where id = ?";
 		try {
@@ -211,5 +211,10 @@ public class GradeDAO {
 	}
 	return count;
 	
+	}
+
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

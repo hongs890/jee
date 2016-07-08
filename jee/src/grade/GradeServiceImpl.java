@@ -2,6 +2,7 @@ package grade;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class GradeServiceImpl implements GradeService{
 
@@ -64,12 +65,12 @@ public class GradeServiceImpl implements GradeService{
 	}
 
 	@Override
-	public List<GradeBean> list() {
+	public List<?> list() {
 		return dao.list();
 	}
 
 	@Override
-	public List<GradeBean> findByID(String id) {
+	public List<?> findBy(String id) {
 		return dao.findByID(id);
 	}
 
@@ -78,10 +79,18 @@ public class GradeServiceImpl implements GradeService{
 	public GradeBean findBySeq(int seq) {
 		return dao.findBySeq(seq);
 	}
-
+	@Override
+	public int count() {
+		return dao.count();
+	}
 	@Override
 	public int count(String findByCount) {
 		return dao.count(findByCount);
+	}
+	@Override
+	public Map<?, ?> map() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

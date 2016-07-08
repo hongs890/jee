@@ -3,8 +3,10 @@
  */
 package bank;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import global.CommonService;
 
 /**
  * @date  : 2016. 6. 20.
@@ -12,7 +14,7 @@ import java.util.List;
  * @file  : AccountService.java
  * @story :
  */
-public interface AccountService {
+public interface AccountService extends CommonService{
 	//1.개설 2.입금 3.조회 4.출금 5.통장내역보기
 	
 	// 1개설
@@ -25,14 +27,7 @@ public interface AccountService {
 	public String updateAccount(AccountMemberBean acc);
 	// 5해지
 	public String deleteAccount(String delete);
-	// 6조회 (전체)
-	public List<AccountMemberBean> findAccount(); // 뷰로 받아야 한다. 
 	// 7조회 (계좌번호)
 	public AccountMemberBean findByAccountNo(int account);
-	// 8조회 (이름)
-	public List<AccountMemberBean> findByName(String name);
-	// 9조회 (전체통장수)
-	public int count();
-	
 }
 

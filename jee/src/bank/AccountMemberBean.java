@@ -65,8 +65,7 @@ public class AccountMemberBean {
 	}
 	@Override
 	public String toString() {
-		return "통장정보 [ID : " + id + ", PW : " + pw + ", 이름 : " + name + ", 등록일자 : " + regDate + ", 성별 : "
-				+ gender + ", 생년월일 : " + ssn + ", 생일 : " + birth + ", 계좌번호 : " + accountNo + ", 잔고 : " + money + "]\n";
+		return "통장정보 [ID : " + id + ", 이름 : " + name + ", 생년월일 : " + ssn + ", 계좌번호 : " + accountNo + ", 잔고 : " + money + "]\n";
 	}
 	
 	

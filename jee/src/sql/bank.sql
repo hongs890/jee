@@ -27,6 +27,14 @@ where m.id = b.id;
 
 select * from bank_member;
 
+select 
+account,
+money,
+id,
+name,
+ssn
+from bank_member;
+
 select * from bank;
 
 ------------------------------------

@@ -60,7 +60,7 @@ public class GradeController {
 				break;
 			case "6": 
 				String findByName = JOptionPane.showInputDialog("조회하실 ID를 입력하세요");
-				JOptionPane.showMessageDialog(null, service.findByID(findByName));
+				JOptionPane.showMessageDialog(null, service.findBy(findByName));
 				break;
 			case "7": 
 				String findByDate = JOptionPane.showInputDialog("조회하실 등록일자를 입력하세요 (예 : 2016-05)");
