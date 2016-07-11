@@ -150,4 +150,13 @@ public class MemberDAO {
 		}
 		return count;
 	}
+
+	public boolean login(MemberBean member) {
+		boolean loginOK = false;
+		MemberBean m = this.findById(member.getId());
+		if (m.getPw().equals(member.getPw())) {
+			loginOK = true;
+		}
+		return loginOK;
+	}
 }

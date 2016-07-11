@@ -28,7 +28,7 @@ public class AccountController {
 		AccountServiceImpl service = AccountServiceImpl.getInstence();
 		while (true) {
 			switch (JOptionPane.showInputDialog("1.개설\n2.입금\n3.출금\n4.수정 \n5.해지\n"
-					+ "6.조회(전체)\n7.조회(계좌번호)\n8.조회(이름)\n9.조회(전체통장수)\n0.종료")) {
+					+ "6.조회(전체)\n7.조회(계좌번호)\n8.조회(이름)\n9.조회(전체통장수)\n10.로그인\n0.종료")) {
 			case "1":
 				AccountBean bean = new AccountBean();
 				String regist = JOptionPane.showInputDialog("ID를 입력하면 계좌가 개설됩니다.");
@@ -71,6 +71,9 @@ public class AccountController {
 				break;
 			case "9":
 				JOptionPane.showMessageDialog(null, "전체 통장 수는" + service.count()+"개 입니다.");
+				break;
+			case "10":
+				
 				break;
 			case "0":return;
 			}

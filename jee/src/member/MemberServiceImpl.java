@@ -3,6 +3,10 @@ package member;
 import java.util.List;
 import java.util.Map;
 
+import bank.AccountService;
+import bank.AccountServiceImpl;
+
+
 /**
  * @date  : 2016. 6. 20.
  * @author: 배근홍
@@ -12,7 +16,9 @@ import java.util.Map;
 public class MemberServiceImpl implements MemberService {
 	
 	MemberDAO dao = MemberDAO.getInstance();
+	AccountService accService = AccountServiceImpl.getInstence();
 	
+	MemberBean session;
 	private static MemberServiceImpl instanceImpl = new MemberServiceImpl();
 	
 	private MemberServiceImpl() {}
@@ -85,6 +91,18 @@ public class MemberServiceImpl implements MemberService {
 	public Map<?, ?> map() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String login(MemberBean member) {
+		String result = "";
+			if (dao.login(member)) {
+				result = "로그인 성공";
+				session = findById(member.getId());
+				accService.map();
+			}else{
+				result="로그인 실패";
+			}
+		return result;
 	}
 
 }

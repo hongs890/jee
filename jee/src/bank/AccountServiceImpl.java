@@ -3,7 +3,7 @@
  */
 package bank;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,11 +15,14 @@ import java.util.Map;
  */
 public class AccountServiceImpl implements AccountService {
 	AccountDAO dao = AccountDAO.getDao();
+	private Map<?,?> map;
 	private static AccountServiceImpl instence = new AccountServiceImpl();
 	public static AccountServiceImpl getInstence() {
 		return instence;
 	}
-	private AccountServiceImpl() {}
+	private AccountServiceImpl() {
+		new HashMap<String,AccountMemberBean>();
+	}
 
 	@Override
 	public String openAccount(AccountBean acc) {
@@ -82,7 +85,8 @@ public class AccountServiceImpl implements AccountService {
 	}
 	@Override
 	public Map<?, ?> map() {
-		// TODO Auto-generated method stub
-		return null;
+		map = new HashMap<String,AccountMemberBean>();
+		map = dao.selectMap();	
+		return map;
 	}
 }

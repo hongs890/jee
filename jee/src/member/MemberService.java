@@ -18,4 +18,5 @@ public interface MemberService extends CommonService{
 	public String update(MemberBean mem);
 	public String delete(String id);
 	public MemberBean findById(String id);
+	public String login(MemberBean member);
 }
