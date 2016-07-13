@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%
+    String ctx = application.getContextPath();
+    %>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title>회원상세정보</title>
-	<link rel="stylesheet" href="../../css/member.css"/>
+	<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
 <style>
 	#member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
 	#member_detail tr{border: 1px solid gray; height:20%}
@@ -21,7 +24,8 @@
 		
 		<table id="member_detail">
 			<tr>
-				<td rowspan="3" style="width:30%"><img src="../../img/james.jpg" alt="W3Schools.com" width="204"
+				<td rowspan="3" style="width:30%">
+				<img src="<%=application.getContextPath()%>/img/james.jpg" alt="W3Schools.com" width="204"
 			height="242"></td>
 				<td style="width:20%" class="font_bold bg_color_yellow">ID</td>
 				<td style="width:40%"></td>
@@ -47,8 +51,8 @@
 		
 		
 		<br/> 
-			<a href="../member_controller.jsp"><img src="../../img/member.png" alt="member" style="width:30px" /></a>
-	<a href="../../index.jsp"><img src="../../img/home.png" alt="home" style="width:30px" /></a>
+			<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
 </body>
 </html>

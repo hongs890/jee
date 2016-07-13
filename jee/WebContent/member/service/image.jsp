@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%
+    String ctx = application.getContextPath();
+    %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img src="../../img/apple.jpg" alt="" />
+	<img src="<%=ctx %>/img/apple.jpg" alt="" />
 </body>
 </html>
