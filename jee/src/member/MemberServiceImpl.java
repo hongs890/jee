@@ -34,9 +34,7 @@ public class MemberServiceImpl implements MemberService {
 	public String regist(MemberBean mem) {
 		String msg = "";
 		if (dao.insert(mem)==1) {
-			msg = "회원가입 축하합니다.";
-		}else{
-			msg = "회원가입 실패";
+			msg = dao.findById(mem.getId()).getName();
 		}
 		return msg;
 	}
