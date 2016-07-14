@@ -16,6 +16,7 @@ div.memberClass {
 </style>
 </head>
 <body>
+
 	<div id="" class="memberClass box">
 		<h1 style="text-align: center;">회원관리</h1>
 		<div style="width: 300px; margin: 0 auto; text-align: left;">

@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import global.Constants;
+import global.DatabaseFactory;
+import global.Vendor;
 
 /**
  *  * @date  : 2016. 7. 1.  * @author: 배근홍  * @file  : MemberDAO.java  * @story 
@@ -16,10 +19,10 @@ import global.Constants;
  */
 
 public class MemberDAO {
-	Connection con = null;
-	Statement stmt = null;
-	ResultSet rs = null; // executeQuery() 에서만 리턴받는 객체
-	PreparedStatement pstmt = null;
+	Connection con;
+	Statement stmt;
+	ResultSet rs;
+	PreparedStatement pstmt;
 	private static MemberDAO instance = new MemberDAO();
 
 	public static MemberDAO getInstance() {
@@ -27,6 +30,16 @@ public class MemberDAO {
 	}
 
 	private MemberDAO() {
+		try {
+			Class.forName(Constants.ORACLE_DRIVER);
+			con = DriverManager.getConnection(
+					Constants.ORACLE_URL,
+					Constants.USER_ID,
+					Constants.USER_PW);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public int insert(MemberBean mem) {
@@ -98,14 +111,16 @@ public class MemberDAO {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			if (rs.next()) {
-				temp = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
+				temp = new MemberBean(rs.getString("ID"), rs.getString("PW"), rs.getString("NAME"),
 						rs.getString("SSN"));
 				temp.setRegDate(rs.getString("REG_DATE"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}System.out.println("DAO 1번째"+temp);
+		System.out.println("findID ID : "+temp.getId());
+		System.out.println("findPW PW : "+temp.getPw());
 		return temp;
 	}
 
@@ -151,12 +166,43 @@ public class MemberDAO {
 		return count;
 	}
 
-	public boolean login(MemberBean member) {
-		boolean loginOK = false;
-		MemberBean m = this.findById(member.getId());
-		if (m.getPw().equals(member.getPw())) {
-			loginOK = true;
+	public boolean login(MemberBean param) {
+		boolean loginOk= false;
+		if(param.getId()!=null 
+				&& param.getPw()!=null 
+				&& this.existId(param.getId())){
+			MemberBean member = this.findById(param.getId());
+			System.out.println("DAO member ID : "+member.getId());
+			System.out.println("DAO param ID : "+param.getId());
+			System.out.println("DAO member PW : "+member.getPw());
+			System.out.println("DAO param PW : "+param.getPw());
+			if(member.getPw().equals(param.getPw())){
+				System.out.println("DAO에서 성공");
+				loginOk = true;
+			}
+		
 		}
-		return loginOK;
+		return loginOk;
+	}
+	public boolean existId(String id){
+		boolean existOK = false;
+		String sql = "select count(*) as count from member where id = ?";
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result = rs.getInt("count");
+				System.out.println("ID 카운트 결과:"+result);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(result == 1){
+			existOK = true;
+		}
+		return existOK;
 	}
 }

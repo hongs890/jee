@@ -21,7 +21,9 @@ public class MemberServiceImpl implements MemberService {
 	MemberBean session;
 	private static MemberServiceImpl instanceImpl = new MemberServiceImpl();
 	
-	private MemberServiceImpl() {}
+	private MemberServiceImpl() {
+		session = new MemberBean();
+	}
 	public static MemberServiceImpl getInstanceImpl() {
 		return instanceImpl;
 	}
@@ -70,9 +72,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public MemberBean findById(String id) {
-		MemberBean temp = dao.findById(id);
-		
-		return temp;
+		return dao.findById(id);
 	}
 	public List<?> list() {
 		// TODO Auto-generated method stub
@@ -95,15 +95,16 @@ public class MemberServiceImpl implements MemberService {
 	
 	public String login(MemberBean member) {
 		String result = "";
+		System.out.println("서비스 디버깅 1 : "+member.getId());
 			if (dao.login(member)) {
-				result = "로그인 성공";
-				session = findById(member.getId());
+				session = dao.findById(member.getId());
+				result = session.getName();
+				System.out.println("서비스디버깅 2 : "+result);
 				accService.map();
 			}else{
-				result="로그인 실패";
+				result = "";
 			}
+		
 		return result;
 	}
-
 }
-
