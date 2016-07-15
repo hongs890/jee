@@ -27,7 +27,13 @@ span.meta{width: 200px; background-color:yellow; float: left}
 	}else{
 %>
 	<form action ="<%=ctx %>/member/result/update.jsp" method="post">
-	<span class="meta">수정할 비밀번호</span><input type="text" name="pw"><br/>
+	<span class="meta">ID</span><%=service.getSession().getId() %><br/>
+	<span class="meta">PW</span><input type="text" name="pw"><br/>
+	<span class="meta">이름</span><%=service.getSession().getName() %><br/>
+	<span class="meta">성별</span><%=service.getSession().getGender() %><br/>
+	<span class="meta">생년월일</span><%=service.getSession().getSsn() %><br/>
+	<span class="meta">등록일</span><%=service.getSession().getRegDate() %><br/>
+	
 	<input type="submit" value="수정 완료">
 	<input type="reset" value="취소">
 	</form>
