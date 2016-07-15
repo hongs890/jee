@@ -23,18 +23,44 @@ p    {color: red;}
 <body>
 <div class="box">
 		<h1>회원정보보기 페이지</h1>
+			<%
+		MemberService service = MemberServiceImpl.getInstanceImpl();
+		MemberBean member = new MemberBean();
 		
-	<%
-	MemberService service = MemberServiceImpl.getInstanceImpl();
+		%>
+		<table id="member_detail">
+			<tr>
+				<td rowspan="3" style="width:30%">
+				<img src="<%=application.getContextPath()%>/img/james.jpg" alt="W3Schools.com" width="204"
+			height="242"></td>
+				<td style="width:20%" class="font_bold bg_color_yellow">ID</td>
+				<td style="width:40%"><%=service.getSession().getId() %></td>
+			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">이 름</td>
+				<td><%=service.getSession().getName() %></td>
+			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">성 별</td>
+				<td><%=service.getSession().getGender() %></td>
+			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">생년월일</td>
+				<td colspan="2"><%=service.getSession().getSsn() %></td>
+				
+			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">등록일</td>
+				<td colspan="2"><%=service.getSession().getRegDate() %></td>
+						</tr>
+		</table>
+		
+		
+		<br/> 
 	
-	if(service.getSession().getId()==null){
-		%><h1>먼저 로그인을 해주세요</h1><br/>
-		<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a>
-		<%
-	}else{
-		response.sendRedirect(ctx+"/member/result/find_by_id.jsp");
-	}
-	%>
+		
+		
+		
 		
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
