@@ -18,7 +18,9 @@
 	MemberService service = MemberServiceImpl.getInstanceImpl();
 	MemberBean member = new MemberBean();
 	String pw = request.getParameter("pw");
+	String email = request.getParameter("email");
 		member.setPw(pw);
+		member.setEmail(email);
 		service.update(member);
 		%>
 		<h1>회원정보 수정에 성공하였습니다.</h1><br/>
@@ -26,6 +28,7 @@
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 		<%
+		
 	
 	%>
 	</div>

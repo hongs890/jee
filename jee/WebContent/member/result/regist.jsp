@@ -33,13 +33,14 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String ssn = request.getParameter("ssn");
+		String email = request.getParameter("email");
 		member.setName(name);
 		member.setId(id);
 		member.setPw(pw);
 		member.setSsn(ssn);
+		member.setEmail(email);
 		member.setRegDate();
 		name = service.regist(member);
-		out.print(name);
 		if(name == ""){
 			%>아이디가 이미 사용중입니다 <a href="<%=ctx%>/member/service/regist.jsp">다른 아이디로 가입하시겠습니까?</a><%
 		}else{
@@ -49,6 +50,7 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 			<span class="meta">ID</span><%=id%><br/>
 			<span class="meta">비밀번호</span><%=pw%><br/>
 			<span class="meta">SSN</span><%=ssn%><br/>
+			<span class="meta">E-mail</span><%=email%><br/>
 			<span class="meta">전공</span><%=request.getParameter("major") %><br/>
 			<span class="meta">수강과목</span> 
 			<%
@@ -56,14 +58,14 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 		if(subjects != null){
 			for(int i=0; i<subjects.length; i++){
 		%>
-				<%= subjects[i] %><br/>
+				<%= subjects[i] %><br/><br/>
 		<%
 			}
 		}
 		%>
 		회원가입을 축하드립니다. <%=request.getParameter("name") %> 님!<%
 		}
-		%>		
+		%>	<br/>	
 
 	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>

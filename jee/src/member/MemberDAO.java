@@ -43,13 +43,14 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberBean mem) {
-		String sql = "insert into member(id,pw,name,reg_date,ssn)" + "values('" + mem.getId() + "','" + mem.getPw()
-				+ "','" + mem.getName() + "'," + "'" + mem.getRegDate() + "','" + mem.getSsn() + "')";
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email)" + "values('" + mem.getId() + "','" + mem.getPw()
+				+ "','" + mem.getName() + "'," + "'" + mem.getRegDate() + "','" + mem.getSsn() + "', '"+mem.getEmail()+"')";
 		return this.exeUpdate(sql);
 	}
 
 	public int update(MemberBean mem) {
-		String sql = "update member set pw = '" + mem.getPw() + "'" + "where id = '" + mem.getId() + "'";
+		
+		String sql = "update member set pw = '" + mem.getPw() + "', email = '"+mem.getEmail()+"'" + "where id = '" + mem.getId() + "'";
 		return this.exeUpdate(sql);
 	}
 
@@ -89,7 +90,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				MemberBean t = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
-						rs.getString("SSN"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
 				t.setRegDate(rs.getString("REG_DATE"));
 				list.add(t);
 			}
@@ -112,7 +113,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery(sql);
 			if (rs.next()) {
 				temp = new MemberBean(rs.getString("ID"), rs.getString("PW"), rs.getString("NAME"),
-						rs.getString("SSN"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
 				temp.setRegDate(rs.getString("REG_DATE"));
 			}
 		} catch (Exception e) {
@@ -135,7 +136,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				MemberBean mem = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
-						rs.getString("SSN"));
+						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
 				mem.setRegDate(rs.getString("REG_DATE"));
 				list2.add(mem);
 			}

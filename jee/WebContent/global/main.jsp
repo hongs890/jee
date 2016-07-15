@@ -66,7 +66,7 @@
 <div id="nav">
 	<ul>
 		<li class="active"><a href="<%=ctx %>/member/member_controller.jsp">회원관리</a></li>
-		<li><a href="<%=ctx %>#">성적관리</a></li>
+		<li><a href="<%=ctx %>/grade/grade_controller.jsp">성적관리</a></li>
 		<li><a href="<%=ctx %>#">계좌관리</a></li>
 		<li><a href="<%=ctx %>/global/school_info.jsp">학교소개</a></li>
 	</ul>

@@ -11,18 +11,67 @@
 	<title>내정보보기</title>
 <link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
 <style>
-h1   {color: blue;}
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+
+#section {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+
+#nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#nav li {
+    float: left;
+}
+
+#nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#nav li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
 p    {color: red;}
 	#member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
-	#member_detail tr{border: 1px solid gray; height:20%}
+	#member_detail tr{border: 1px solid gray; height:10%}
 	#member_detail tr td{border: 1px solid gray;}
 	.font_bold{font-weight: bold;}
 	.bg_color_yellow{background-color: yellow}
 </style>
 </head>
 <body>
-<div class="box">
-		<h1>회원정보보기 페이지</h1>
+<div style="text-align: center">
+<div id="header">
+<h1>회원정보보기 페이지</h1>
+</div>
+		
 			<%
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		MemberBean member = new MemberBean();
@@ -30,25 +79,37 @@ p    {color: red;}
 		%>
 		<table id="member_detail">
 			<tr>
-				<td rowspan="3" style="width:30%">
-				<img src="<%=application.getContextPath()%>/img/james.jpg" alt="W3Schools.com" width="204"
-			height="242"></td>
+				<td rowspan="5" style="width:30%">
+				<img src="<%=ctx%>/img/<%=service.getSession().getProfileImg()%>" alt="W3Schools.com" width="200"
+			height="200"></td>
 				<td style="width:20%" class="font_bold bg_color_yellow">ID</td>
 				<td style="width:40%"><%=service.getSession().getId() %></td>
+			</tr>
+				<tr>
+				<td class="font_bold bg_color_yellow">비밀번호</td>
+				<td>*******</td>
 			</tr>
 			<tr>
 				<td class="font_bold bg_color_yellow">이 름</td>
 				<td><%=service.getSession().getName() %></td>
 			</tr>
+			
 			<tr>
 				<td class="font_bold bg_color_yellow">성 별</td>
 				<td><%=service.getSession().getGender() %></td>
 			</tr>
-			<tr>
-				<td class="font_bold bg_color_yellow">생년월일</td>
-				<td colspan="2"><%=service.getSession().getSsn() %></td>
+				<tr>
+				<td class="font_bold bg_color_yellow">이메일</td>
+				<%System.out.print(service.getSession().getEmail()); %>
+				<td><%=service.getSession().getEmail() %></td>
 				
 			</tr>
+			<tr>
+				<td class="font_bold bg_color_yellow">생년월일</td>
+				<td colspan="2"><%=service.getSession().getSsn().substring(0, 6) %></td>
+				
+			</tr>
+		
 			<tr>
 				<td class="font_bold bg_color_yellow">등록일</td>
 				<td colspan="2"><%=service.getSession().getRegDate() %></td>
@@ -64,6 +125,9 @@ p    {color: red;}
 		
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
+	</div>
+	<div id ="footer">
+	Copyright � hanbit academy
 	</div>
 </body>
 </html>

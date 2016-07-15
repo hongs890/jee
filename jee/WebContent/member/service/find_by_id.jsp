@@ -11,7 +11,6 @@
 	<title>내정보보기</title>
 <link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
 <style>
-h1   {color: blue;}
 p    {color: red;}
 	#member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
 	#member_detail tr{border: 1px solid gray; height:20%}
@@ -21,15 +20,13 @@ p    {color: red;}
 </style>
 </head>
 <body>
-<div class="box">
-		<h1>회원정보보기 페이지</h1>
-		
+<div class="box">	
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
 	
 	if(service.getSession().getId()==null){
 		%><h1>먼저 로그인을 해주세요</h1><br/>
-		<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a>
+		<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a><br/><br/>
 		<%
 	}else{
 		response.sendRedirect(ctx+"/member/result/find_by_id.jsp");

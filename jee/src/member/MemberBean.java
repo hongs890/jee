@@ -15,16 +15,18 @@ import javax.swing.JOptionPane;
  * @story :
  */
 public class MemberBean {
-	private String id, pw, name, regDate, gender, ssn, profileImg;
+	private String id, pw, name, regDate, gender, ssn, profileImg, email;
 	private int birth;
 	
 	public MemberBean() {}
 	
-	public MemberBean(String id,String pw, String name, String ssn) {
+	public MemberBean(String id,String pw, String name, String ssn, String email, String profileImg) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.ssn = ssn;
+		this.profileImg = profileImg;
+		this.email = email;
 		String now = regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
 		String[] ssnArr = ssn.split("-");
 		String[] nowArr = now.split("-");
@@ -82,6 +84,12 @@ public class MemberBean {
 	public void setSsn(String ssn){
 		this.ssn = ssn;
 	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
 	//-----------------------------
 	public String getId(){
 		return this.id;
@@ -113,12 +121,19 @@ public class MemberBean {
 	public int getBirth(){
 		return this.birth;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	
+	public String getEmail() {
+		return this.email;
+	}
+
+	
+
+
+
+
 	@Override
 	public String toString() {
-		return "학생 [아이디=" + id + ", 비밀번호="+pw+", 이름=" + name + ", 등록일=" + regDate + ", 성별=" + gender
+		return "학생 [아이디=" + id + ", 비밀번호="+pw+", 이메일="+email+" 이름=" + name + ", 등록일=" + regDate + ", 성별=" + gender
 				+ ", 주민번호=******-******* , 나이=" + birth + "]\n";
 	}
 	

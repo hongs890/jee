@@ -53,6 +53,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		mem.setId(session.getId());
 		if (dao.update(mem) == 1) {
+			session = dao.findById(mem.getId());
 			upt = "정보수정 성공";
 		}else {
 			upt = "정보수정 실패";
@@ -79,6 +80,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public MemberBean findById(String id) {
+	
 		return dao.findById(id);
 	}
 	public List<?> list() {

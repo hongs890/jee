@@ -22,7 +22,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 		
 		if(service.getSession().getId()==null){
 			%><h1>먼저 로그인을 해주세요</h1><br/>
-			<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a>
+			<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a><br/><br/>
 			<%
 		}else{
 			%>
