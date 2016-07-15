@@ -3,6 +3,7 @@
  */
 package member;
 
+import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +48,9 @@ public class MemberController {
 				stu4.setPw(inputArr4[1]);
 				String result4 = service.login(stu4);
 				JOptionPane.showMessageDialog(null, result4);
+				break;
+			case "3":
+				JOptionPane.showMessageDialog(null, service.myAccount());
 				break;
 			case "4":
 				MemberBean stu2 = new MemberBean();

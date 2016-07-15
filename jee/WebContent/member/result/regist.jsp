@@ -25,7 +25,7 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 <div class="box">
 	
 		<%
-		request.setCharacterEncoding("utf-8");
+
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		MemberBean member = new MemberBean();
 		
@@ -64,10 +64,7 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 		회원가입을 축하드립니다. <%=request.getParameter("name") %> 님!<%
 		}
 		%>		
-		
-		
-		
-		
+
 	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 		

@@ -25,5 +25,4 @@ update member set pw = '999'
 where id = 'you';
 -- DELETE
 delete from member where id = 'you';
-
 drop table member;

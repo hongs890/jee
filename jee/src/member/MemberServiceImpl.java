@@ -24,6 +24,11 @@ public class MemberServiceImpl implements MemberService {
 	private MemberServiceImpl() {
 		session = new MemberBean();
 	}
+
+	public MemberBean getSession() {
+		return session;
+	}
+	
 	public static MemberServiceImpl getInstanceImpl() {
 		return instanceImpl;
 	}
@@ -104,5 +109,8 @@ public class MemberServiceImpl implements MemberService {
 			}
 		
 		return result;
+	}
+	public String myAccount() {
+		return session.toString();
 	}
 }
