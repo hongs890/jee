@@ -50,6 +50,8 @@ public class MemberServiceImpl implements MemberService {
 	public String update(MemberBean mem) {
 		// 수정
 		String upt = "";
+		
+		mem.setId(session.getId());
 		if (dao.update(mem) == 1) {
 			upt = "정보수정 성공";
 		}else {
@@ -69,6 +71,8 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return remove;
 	}
+	
+	
 	public int count() {
 		// TODO Auto-generated method stub
 		return dao.count();
