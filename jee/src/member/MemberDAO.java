@@ -37,103 +37,103 @@ public class MemberDAO {
 					Constants.USER_ID,
 					Constants.USER_PW);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public int insert(MemberBean mem) {
-		String sql = "insert into member(id,pw,name,reg_date,ssn,email)" + "values('" + mem.getId() + "','" + mem.getPw()
-				+ "','" + mem.getName() + "'," + "'" + mem.getRegDate() + "','" + mem.getSsn() + "', '"+mem.getEmail()+"')";
-		return this.exeUpdate(sql);
+		int result = 0;	
+		String sql = "insert into member(id,pw,name,reg_date,ssn,email) "
+				+ "values(?,?,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem.getId());
+			pstmt.setString(2, mem.getPw());
+			pstmt.setString(3, mem.getName());
+			pstmt.setString(4, mem.getRegDate());
+			pstmt.setString(5, mem.getSsn());
+			pstmt.setString(6, mem.getEmail());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public int update(MemberBean mem) {
-		
-		String sql = "update member set pw = '" + mem.getPw() + "', email = '"+mem.getEmail()+"'" + "where id = '" + mem.getId() + "'";
-		return this.exeUpdate(sql);
+		int result = 0;
+		String sql = "update member set pw = ?, email = ? where id = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem.getPw());
+			pstmt.setString(2, mem.getEmail());
+			pstmt.setString(3, mem.getId());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public int delete(String id) {
-		String sql = "delete from member where id = '" + id + "'";
-		return this.exeUpdate(sql);
-	}
-
-	public int exeUpdate(String sql) {
-		int updateResult = 0;
+		int result = 0;
+		String sql = "delete from member where id = ?";
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			updateResult = stmt.executeUpdate(sql);
-
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (updateResult == 0) {
-			System.out.println("성공");
-		} else {
-			System.out.println("실패");
-		}
-		return updateResult;
+		return result;
 	}
 
-	// list
+	
 	public List<?> list() {
 		String sql = "select * from member";
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberBean t = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
 						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
 				t.setRegDate(rs.getString("REG_DATE"));
 				list.add(t);
 			}
-			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
 
-	// findByPK
 	public MemberBean findById(String pk) {
-		String sql = "select * from member where id = '" + pk + "'";
+		String sql = "select * from member where id = ?";
 		MemberBean temp = null;
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pk);
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				temp = new MemberBean(rs.getString("ID"), rs.getString("PW"), rs.getString("NAME"),
 						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
 				temp.setRegDate(rs.getString("REG_DATE"));
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}System.out.println("DAO 1번째"+temp);
-		System.out.println("findID ID : "+temp.getId());
-		System.out.println("findPW PW : "+temp.getPw());
+		}
 		return temp;
 	}
 
-	// findByNotPK
+	
 	public List<?> findByName(String name) {
-		String sql = "select * from member where name = '"+name+"'";
+		String sql = "select * from member where name = ?";
 		List<MemberBean> list2 = new ArrayList<MemberBean>();
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberBean mem = new MemberBean(rs.getString("ID"), rs.getString("NAME"), rs.getString("PW"),
 						rs.getString("SSN"), rs.getString("EMAIL"), rs.getString("PROFILE_IMG"));
@@ -141,27 +141,21 @@ public class MemberDAO {
 				list2.add(mem);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return list2;
 	}
 
-	// count
 	public int count() {
 		int count = 0;
 		String sql = "select count(*) as count from member";
 		try {
-			Class.forName(Constants.ORACLE_DRIVER);
-			con = DriverManager.getConnection(Constants.ORACLE_URL, Constants.USER_ID, Constants.USER_PW);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				count = rs.getInt("count");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return count;
@@ -173,12 +167,7 @@ public class MemberDAO {
 				&& param.getPw()!=null 
 				&& this.existId(param.getId())){
 			MemberBean member = this.findById(param.getId());
-			System.out.println("DAO member ID : "+member.getId());
-			System.out.println("DAO param ID : "+param.getId());
-			System.out.println("DAO member PW : "+member.getPw());
-			System.out.println("DAO param PW : "+param.getPw());
 			if(member.getPw().equals(param.getPw())){
-				System.out.println("DAO에서 성공");
 				loginOk = true;
 			}
 		

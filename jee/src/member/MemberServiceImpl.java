@@ -29,11 +29,15 @@ public class MemberServiceImpl implements MemberService {
 		return session;
 	}
 	
-	public static MemberServiceImpl getInstanceImpl() {
-		return instanceImpl;
+	public void logoutSession() {
+		session = null;
 	}
 	
 	
+
+	public static MemberServiceImpl getInstanceImpl() {
+		return instanceImpl;
+	}
 	
 	@Override
 	public String regist(MemberBean mem) {
@@ -104,11 +108,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	public String login(MemberBean member) {
 		String result = "";
-		System.out.println("서비스 디버깅 1 : "+member.getId());
 			if (dao.login(member)) {
 				session = dao.findById(member.getId());
 				result = session.getName();
-				System.out.println("서비스디버깅 2 : "+result);
 				accService.map();
 			}else{
 				result = "";

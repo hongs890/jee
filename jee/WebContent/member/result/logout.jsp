@@ -3,14 +3,12 @@
     <% String ctx = application.getContextPath(); %>
     <%@ page import = "member.MemberServiceImpl" %>
     <%@ page import = "member.MemberService" %>
-    <%@ page import = "member.MemberBean" %>
-    
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>내 정보 수정</title>
-	<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
+	<title>로그아웃</title>
+	<link rel="stylesheet" href="<%=ctx %>/css/member.css" />
 	<style>
 	#header {
     background-color:black;
@@ -63,28 +61,16 @@
 	</style>
 </head>
 <body>
-	
-	<div style="header">
-	회원정보 변경 페이지
-	</div>
-	<div style="text-align : center">
+<div id="header">
+<h1>로그아웃</h1>
+</div>
+<div style="text-align: center">
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
-	MemberBean member = new MemberBean();
-	String pw = request.getParameter("pw");
-	String email = request.getParameter("email");
-		member.setPw(pw);
-		member.setEmail(email);
-		service.update(member);
-		%>
-		<h1>회원정보 수정에 성공하였습니다.</h1><br/>
-		
-		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+	service.logoutSession();
+	%> 정상적으로 로그아웃 되었습니다. <br/>
 	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
-		<%
-		
-	
-	%>
+	<br/>
 	</div>
 	<div id="footer">
 	Copyright � hanbit academy

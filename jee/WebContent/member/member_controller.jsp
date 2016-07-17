@@ -79,10 +79,7 @@
 				<li><a href="<%=ctx %>/member/service/count.jsp">전체 회원수</a></li>
 			</ol>
 		</div>
-		<p>
-			<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home"
-				style="width: 30px" /></a>
-		</p>
+	
 	</div>
 	<div id="footer">
 	Copyright � hanbit academy

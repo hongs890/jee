@@ -20,5 +20,6 @@ public interface MemberService extends CommonService{
 	public MemberBean findById(String id);
 	public String login(MemberBean member);
 	public MemberBean getSession();
+	public void logoutSession();
 	
 }
