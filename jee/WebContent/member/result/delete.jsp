@@ -20,8 +20,8 @@
 		<%
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		service.delete(service.getSession().getId());
+		response.sendRedirect(ctx+"index.jsp");
 		%>
-		회원탈퇴가 완료되었습니다.
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>

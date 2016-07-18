@@ -24,7 +24,7 @@ select * from member where gender = '남'; -- findByNotPK
 select count(*) as count from member; -- count
 
 -- UPDATE
-update member set pw = '3', email='dong5@test.com' where id ='dong';
+update member set pw = '2', email='hong2@test.com' where id ='hong';
 update member set email = id || '@test.com';
 update member set pw = '1' where id = 'hong';
 where id = 'you';
