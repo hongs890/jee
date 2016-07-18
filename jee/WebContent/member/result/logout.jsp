@@ -3,76 +3,32 @@
     <% String ctx = application.getContextPath(); %>
     <%@ page import = "member.MemberServiceImpl" %>
     <%@ page import = "member.MemberService" %>
+    <%@ page import = "member.MemberBean" %>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title>로그아웃</title>
 	<link rel="stylesheet" href="<%=ctx %>/css/member.css" />
-	<style>
-	#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-
-#section {
-    width:350px;
-    float:left;
-    padding:10px;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px;
-}
-
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#nav li {
-    float: left;
-}
-
-#nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-	
-	</style>
 </head>
 <body>
-<div id="header">
+<div class="header">
 <h1>로그아웃</h1>
 </div>
 <div style="text-align: center">
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
-	service.logoutSession();
-	%> 정상적으로 로그아웃 되었습니다. <br/>
-	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
-	<br/>
+	MemberBean bean = new MemberBean();
+	String id = request.getParameter("id");
+	String pw = request.getParameter("pw");
+	bean.setId(id);
+	bean.setPw(pw);
+	service.logoutSession(bean);
+	response.sendRedirect(ctx+"/index.jsp");
+	%> 
+	
 	</div>
-	<div id="footer">
+	<div class="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

@@ -11,60 +11,10 @@
 	<meta charset="UTF-8" />
 	<title>내 정보 수정</title>
 	<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
-	<style>
-	#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-
-#section {
-    width:350px;
-    float:left;
-    padding:10px;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px;
-}
-
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#nav li {
-    float: left;
-}
-
-#nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-	
-	</style>
 </head>
 <body>
 	
-	<div style="header">
+	<div class="header">
 	회원정보 변경 페이지
 	</div>
 	<div style="text-align : center">
@@ -86,7 +36,7 @@
 	
 	%>
 	</div>
-	<div id="footer">
+	<div class="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

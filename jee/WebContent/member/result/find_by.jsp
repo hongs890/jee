@@ -13,53 +13,6 @@
 <style>
 	iframe.ifrm{border:none; width:250px; height: 250px;}
 	span.meta{width: 200px; background-color:yellow; float: left}
-	#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-
-#section {
-    width:350px;
-    float:left;
-    padding:10px;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px;
-}
-
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#nav li {
-    float: left;
-}
-
-#nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
 #member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
 	#member_detail tr{border: 1px solid gray; height:10%}
 	#member_detail tr td{border: 1px solid gray;}
@@ -68,7 +21,7 @@
 </style>
 </head>
 <body>
-<div id ="header">
+<div class ="header">
 <h1>회원 검색</h1>
 </div>
 	<div class="box">
@@ -124,7 +77,7 @@
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-		<div id="footer">
+		<div class="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

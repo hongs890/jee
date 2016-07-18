@@ -26,7 +26,7 @@ select count(*) as count from member; -- count
 -- UPDATE
 update member set pw = '3', email='dong5@test.com' where id ='dong';
 update member set email = id || '@test.com';
-update member set pw = '2' where id = 'dong';
+update member set pw = '1' where id = 'hong';
 where id = 'you';
 update member set profile_img = id || '.jpg' where profile_img is NULL;
 update member set name = '최경환' where name='홍길동3';

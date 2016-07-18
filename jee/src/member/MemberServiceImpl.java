@@ -29,12 +29,12 @@ public class MemberServiceImpl implements MemberService {
 		return session;
 	}
 	
-	public void logoutSession() {
-		session = null;
+	public void logoutSession(MemberBean member) {
+		if (member.getId().equals(session.getId()) && member.getPw().equals(session.getPw())) {
+			session = null;
+		}
 	}
 	
-	
-
 	public static MemberServiceImpl getInstanceImpl() {
 		return instanceImpl;
 	}
