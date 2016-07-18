@@ -43,7 +43,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 			</tr>
 				<tr>
 				<td class="font_bold bg_color_yellow">비밀번호</td>
-				<td><input type="text" name="pw"></td>
+				<td><input type="text" name="pw" value="<%=service.getSession().getPw()%>"></td>
 			</tr>
 			<tr>
 				<td class="font_bold bg_color_yellow">이 름</td>
@@ -56,7 +56,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 			</tr>
 				<tr>
 				<td class="font_bold bg_color_yellow">이메일</td>
-				<td><input type="text" name="email"></td>
+				<td><input type="text" name="email" value="<%=service.getSession().getEmail() %>>"></td>
 				
 			</tr>
 			<tr>

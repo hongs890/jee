@@ -8,58 +8,9 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>한빛 아카데미</title>
-	<style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-
-#section {
-    width:350px;
-    float:left;
-    padding:10px;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px;
-}
-
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#nav li {
-    float: left;
-}
-
-#nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-</style>
 </head>
 <body>
-		<div id="header">
+		<div class="header">
 <h1>학생 관리 시스템[Student Management System]</h1>
 </div>
 
@@ -72,7 +23,7 @@
 	</ul>
 </div>
 
-<div id="section">
+<div class="section">
 <h2>회원관리</h2>
 <p>London is the capital city of England. It is the most populous city in the United Kingdom,
 with a metropolitan area of over 13 million inhabitants.</p>
