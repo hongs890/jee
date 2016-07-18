@@ -20,7 +20,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 </head>
 <body>
 <div style="text-align: center">
-<div class="header">
+<div id="header">
 	<h1>정보수정 페이지</h1>
 </div>
 	<%
@@ -80,7 +80,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 	%>
 <a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
-	<div class ="footer">
+	<div id ="footer">
 	Copyright � hanbit academy
 	</div>
 	</div>

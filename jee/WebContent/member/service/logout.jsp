@@ -12,7 +12,7 @@
 	
 </head>
 <body>
-<div class="header">
+<div id="header">
 <h1>로그아웃 페이지</h1>
 </div>
 <div style="text-align: center">
@@ -37,7 +37,7 @@
 	%>
 	</form>
 	</div>
-		<div class="footer">
+		<div id="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

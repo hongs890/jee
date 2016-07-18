@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<%=ctx %>/css/member.css" />
 </head>
 <body>
-<div class="header">
+<div id="header">
 <h2>회원관리</h2>
 </div>
 	<div style="text-align: center">
@@ -28,9 +28,9 @@
 				<li><a href="<%=ctx %>/member/service/count.jsp">전체 회원수</a></li>
 			</ol>
 		</div>
-	
+	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-	<div class="footer">
+	<div id="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

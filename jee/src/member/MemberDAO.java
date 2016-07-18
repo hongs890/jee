@@ -172,6 +172,7 @@ public class MemberDAO {
 		}
 		return loginOk;
 	}
+	
 	public boolean existId(String id){
 		boolean existOK = false;
 		String sql = "select count(*) as count from member where id = ?";
@@ -182,10 +183,8 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				result = rs.getInt("count");
-				System.out.println("ID 카운트 결과:"+result);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(result == 1){

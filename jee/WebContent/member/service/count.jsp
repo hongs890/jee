@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%=ctx %>/css/member.css" />
 </head>
 <body>
-<div class="header">
+<div id="header">
 <h1>회원수 조회</h1>
 </div>
 	<div style="text-align:center">
@@ -28,7 +28,7 @@
 			href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home"
 			style="width: 30px" /></a>
 	</div>
-		<div class="footer">
+		<div id="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

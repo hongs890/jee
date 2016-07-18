@@ -21,7 +21,7 @@ p    {color: red;}
 </head>
 <body>
 <div style="text-align: center">
-<div class="header">
+<div id="header">
 <h1>회원정보보기 페이지</h1>
 </div>
 		
@@ -79,7 +79,7 @@ p    {color: red;}
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-	<div class ="footer">
+	<div id ="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

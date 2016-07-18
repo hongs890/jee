@@ -14,7 +14,7 @@
 </head>
 <body>
 	
-	<div class="header">
+	<div id="header">
 	회원정보 변경 페이지
 	</div>
 	<div style="text-align : center">
@@ -37,7 +37,7 @@
 	
 	%>
 	</div>
-	<div class="footer">
+	<div id="footer">
 	Copyright � hanbit academy
 	</div>
 </body>

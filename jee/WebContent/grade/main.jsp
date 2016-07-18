@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <% String ctx = application.getContextPath(); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +8,10 @@
 	<link rel="stylesheet" href="<%=ctx %>/css/member.css" />
 </head>
 <body>
-	<div class="box">
-	<h1 style="text-align: center">성적 관리</h1>
+<div class="header">
+<h1>성적 관리</h1>
+</div>
+<div style="text-align: center">
 	<div style="width: 300px; margin:0 auto; text-align: left">
 	<ol>
 	<li><a href="<%=ctx%>">추가</a></li>
@@ -20,14 +21,15 @@
 	<li><a href="<%=ctx%>">학점을 포함한 시험내역 조회 (SEQ)</a></li>
 	<li><a href="<%=ctx%>">시퀀스 조회 (ID)</a></li>
 	<li><a href="<%=ctx%>">응시생수 (시험일자별)</a></li>
-	
 	</ol>
 	</div>
 	<p>
-			<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home"
-				style="width: 30px" /></a>
+			<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 		</p>
 		
+	</div>
+	<div class="footer">
+		Copyright � hanbit academy
 	</div>
 </body>
 </html>

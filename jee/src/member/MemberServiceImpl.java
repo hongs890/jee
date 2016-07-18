@@ -52,7 +52,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void update(MemberBean mem) {
-		// 수정
 		dao.update(mem);
 		session = dao.findById(mem.getId());
 	}
@@ -65,7 +64,6 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	public int count() {
-		// TODO Auto-generated method stub
 		return dao.count();
 	}
 	@Override
@@ -74,21 +72,17 @@ public class MemberServiceImpl implements MemberService {
 		return dao.findById(id);
 	}
 	public List<?> list() {
-		// TODO Auto-generated method stub
 		return dao.list();
 	}
 	public List<?> findByName(String findName) {
-		// TODO Auto-generated method stub
 		return dao.findByName(findName);
 	}
 	@Override
 	public List<?> findBy(String keyword) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public Map<?, ?> map() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

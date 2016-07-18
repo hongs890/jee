@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
 </head>
 <body>
-<div class ="header">
+<div id ="header">
 </div>
 <div style="text-align: center">
 		<%
@@ -46,7 +46,7 @@
 		}
 	%>
 </div>
-	<div class="footer">
+	<div id="footer">
 	Copyright � hanbit academy
 	</div>
 </body>
