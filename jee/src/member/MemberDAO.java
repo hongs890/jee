@@ -75,10 +75,11 @@ public class MemberDAO {
 	}
 
 	public void delete(MemberBean mem) {
-		String sql = "delete from member where id = ?";
+		String sql = "delete from member where id = ? and pw = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getId());
+			pstmt.setString(2, mem.getPw());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -23,6 +23,7 @@
 		if(request.getParameter("id").equals(service.getSession().getId())
 				&&request.getParameter("pw").equals(service.getSession().getPw())){
 			bean.setId(service.getSession().getId());
+			bean.setPw(service.getSession().getPw());
 			service.delete(bean);
 			response.sendRedirect(ctx+"/index.jsp");
 		}else{

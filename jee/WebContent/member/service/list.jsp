@@ -31,8 +31,11 @@ p{text-align: center;}
 </style>
 </head>
 <body>
-<div class="box">
-	<h1 style="text-align: center;">목록보기</h1> <br/>
+<div class="header">
+<h1>목록보기</h1>
+</div>
+<div style="text-align: center">
+	
 	<table>
 	  <tr>
     <td>ID</td>
@@ -74,6 +77,9 @@ p{text-align: center;}
 	
 	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
+	</div>
+	<div class="footer">
+		Copyright � hanbit academy
 	</div>
 </body>
 </html>
