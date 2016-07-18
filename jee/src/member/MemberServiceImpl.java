@@ -51,19 +51,10 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	@Override
-	public String update(MemberBean mem) {
+	public void update(MemberBean mem) {
 		// 수정
-		String upt = "";
-		
-		mem.setId(session.getId());
-		if (dao.update(mem) == 1) {
-			session = dao.findById(mem.getId());
-			upt = "정보수정 성공";
-		}else {
-			upt = "정보수정 실패";
-		}
-		return upt;
-		
+		dao.update(mem);
+		session = dao.findById(mem.getId());
 	}
 
 	@Override

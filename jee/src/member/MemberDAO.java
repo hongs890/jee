@@ -61,19 +61,17 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int update(MemberBean mem) {
-		int result = 0;
+	public void update(MemberBean mem) {
 		String sql = "update member set pw = ?, email = ? where id = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getPw());
 			pstmt.setString(2, mem.getEmail());
 			pstmt.setString(3, mem.getId());
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
 	}
 
 	public int delete(String id) {

@@ -20,12 +20,13 @@
 	<div style="text-align : center">
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
-	MemberBean member = new MemberBean();
+	MemberBean member = service.findById(request.getParameter("id"));
 	String pw = request.getParameter("pw");
 	String email = request.getParameter("email");
 		member.setPw(pw);
 		member.setEmail(email);
 		service.update(member);
+		response.sendRedirect(ctx+"/member/result/find_by_id.jsp");
 		%>
 		<h1>회원정보 수정에 성공하였습니다.</h1><br/>
 		

@@ -8,13 +8,13 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>한빛 아카데미</title>
+	<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
 </head>
 <body>
 		<div class="header">
 <h1>학생 관리 시스템[Student Management System]</h1>
 </div>
-
-<div id="nav">
+<div class="nav">
 	<ul>
 		<li class="active"><a href="<%=ctx %>/member/member_controller.jsp">회원관리</a></li>
 		<li><a href="<%=ctx %>/grade/grade_controller.jsp">성적관리</a></li>
@@ -31,7 +31,7 @@ with a metropolitan area of over 13 million inhabitants.</p>
 its history going back to its founding by the Romans, who named it Londinium.</p>
 </div>
 
-<div id="footer">
+<div class="footer">
 Copyright � hanbit academy
 </div>
 </body>

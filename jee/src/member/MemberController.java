@@ -58,7 +58,6 @@ public class MemberController {
 				String[] updateArr = update.split(",");
 				stu2.setId(updateArr[0]);
 				stu2.setPw(updateArr[1]);
-				JOptionPane.showMessageDialog(null, service.update(stu2));
 				break;
 			case "5":
 				String result3 = service.delete(JOptionPane.showInputDialog("삭제하실 ID를 입력하세요"));

@@ -56,7 +56,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 			</tr>
 				<tr>
 				<td class="font_bold bg_color_yellow">이메일</td>
-				<td><input type="text" name="email" value="<%=service.getSession().getEmail() %>>"></td>
+				<td><input type="text" name="email" value="<%=service.getSession().getEmail() %>"></td>
 				
 			</tr>
 			<tr>
@@ -70,7 +70,7 @@ span.meta{width: 200px; background-color:yellow; float: left}
 				<td colspan="2"><%=service.getSession().getRegDate() %></td>
 						</tr>
 		</table>
-
+	<input type ="hidden" name="id" value="<%=service.getSession().getId() %>">
 	<input type="submit" value="수정 완료">
 	<input type="reset" value="취소">
 	</form>

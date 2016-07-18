@@ -14,7 +14,7 @@
 <div class="header">
 <h2>회원관리</h2>
 </div>
-	<div id="" style="text-align: center">
+	<div style="text-align: center">
 		<div style="width: 300px; margin: 0 auto; text-align: left;">
 			<ol>
 				<li><a href="<%=ctx %>/member/service/regist.jsp">회원가입</a></li>
