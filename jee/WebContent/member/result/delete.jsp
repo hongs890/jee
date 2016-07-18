@@ -19,8 +19,16 @@
 	<div style="text-align:center">
 		<%
 		MemberService service = MemberServiceImpl.getInstanceImpl();
-		service.delete(service.getSession().getId());
-		response.sendRedirect(ctx+"index.jsp");
+
+		if(request.getParameter("id").equals(service.getSession().getId())
+				&&request.getParameter("pw").equals(service.getSession().getPw())){
+			service.delete(service.getSession().getId());
+			response.sendRedirect(ctx+"/index.jsp");
+		}else{
+			%>잘못된 정보를 입력하셨습니다.<br/>
+			<a href="<%=ctx%>/member/member_controller.jsp">메인화면으로 돌아가기</a><%
+		}
+	
 		%>
 		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>

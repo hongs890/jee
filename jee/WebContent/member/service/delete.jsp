@@ -30,9 +30,10 @@ span.meta{width: 200px; background-color:yellow; float: left}
 			%>
 			<h1>정말 탈퇴하시겠습니까?</h1><br/>
 			<form action="<%=ctx %>/member/result/delete.jsp" method="post">
-			
-			<input type="submit" value="예">
-					<input type="reset" value="아니오">
+			<input type="hidden" name="id" value="<%=service.getSession().getId()%>">
+			비밀번호를 입력해주세요<input type="text" name="pw"><br/>
+			<input type="submit" value="탈퇴">
+					<input type="reset" value="취소">
 			
 			</form> 
 			
