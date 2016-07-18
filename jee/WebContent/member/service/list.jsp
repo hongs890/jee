@@ -1,15 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <%
-    String ctx = application.getContextPath();
-    %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-<title>전체회원 조회</title>
-
-<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<jsp:include page= "../../global/nav.jsp" />
 <style>
 table {
     font-family: arial, sans-serif;
@@ -29,11 +22,6 @@ tr:nth-child(even) {
 
 p{text-align: center;}
 </style>
-</head>
-<body>
-<div id="header">
-<h1>목록보기</h1>
-</div>
 <div style="text-align: center">
 	
 	<table>
@@ -75,11 +63,8 @@ p{text-align: center;}
   </tr>
 </table>
 	
-	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+	<a href="<%=ctx %>/member/main.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-	<div id="footer">
-		Copyright � hanbit academy
-	</div>
-</body>
-</html>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />

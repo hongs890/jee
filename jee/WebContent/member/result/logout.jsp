@@ -1,20 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <% String ctx = application.getContextPath(); %>
-    <%@ page import = "member.MemberServiceImpl" %>
-    <%@ page import = "member.MemberService" %>
-    <%@ page import = "member.MemberBean" %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>로그아웃</title>
-	<link rel="stylesheet" href="<%=ctx %>/css/member.css" />
-</head>
-<body>
-<div id="header">
-<h1>로그아웃</h1>
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
+<%@ page import = "member.MemberServiceImpl" %>
+<%@ page import = "member.MemberService" %>
+<%@ page import = "member.MemberBean" %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<jsp:include page= "../../global/nav.jsp" />
 <div style="text-align: center">
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
@@ -26,10 +17,6 @@
 	service.logoutSession(bean);
 	response.sendRedirect(ctx+"/index.jsp");
 	%> 
-	
-	</div>
-	<div id="footer">
-	Copyright � hanbit academy
-	</div>
-</body>
-</html>
+</div>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />

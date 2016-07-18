@@ -1,31 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <%
-    String ctx = application.getContextPath();
-    %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>회원가입</title>
-<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
-<style type="text/css">
-div.box {border: 5px solid powderblue;
-	margin: 0 auto;
-	width: 600px;
-	text-align: center;}
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<style>
 span.meta{width: 500px; background-color:yellow; float: center}
-div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 </style>
-</head>
-<body>
-<div id ="header">
-<h1>회원가입 페이지</h1>
-</div>
 <div style="text-align: center">
-	
 		<form action="<%=ctx %>/member/result/regist.jsp" method="post">
-		
 		<span class="meta">이름 </span> <input type="text" name="name"/><br/>
 		<span class="meta">ID</span><input type="text" name="id"/><br/>
 		<span class="meta">비밀번호</span><input type="text" name="pw"/><br/>
@@ -43,16 +24,10 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 		<input type="checkbox" name="subject" value="python"/> 파이썬
 		<input type="checkbox" name="subject" value="delphi"/> 델파이
 		<input type="checkbox" name="subject" value="html"/> HTML<br/>
-		
 		<input type="submit" value="회원가입" />
 		<input type="reset" value="취소" />
-	
 	</form>	
-	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
-	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
+	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 </div>
-<div id ="footer">
-Copyright � hanbit academy
-</div>
-</body>
-</html>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />

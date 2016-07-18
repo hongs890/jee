@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <% String ctx = application.getContextPath(); %>
-        <%@ page import = "member.MemberServiceImpl" %>
-        <%@ page import = "member.MemberService" %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-<title>정보수정</title>
-<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
+<%@ page import = "member.MemberServiceImpl" %>
+<%@ page import = "member.MemberService" %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<jsp:include page= "../../global/nav.jsp" />
 <style>
 span.meta{width: 200px; background-color:yellow; float: left}
 #member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
@@ -17,15 +13,9 @@ span.meta{width: 200px; background-color:yellow; float: left}
 	.font_bold{font-weight: bold;}
 	.bg_color_yellow{background-color: yellow}
 </style>
-</head>
-<body>
-<div style="text-align: center">
-<div id="header">
-	<h1>정보수정 페이지</h1>
-</div>
+<div style="text-align:center">
 	<%
 	MemberService service = MemberServiceImpl.getInstanceImpl();
-	
 	if(service.getSession() == null || service.getSession().getId()==null){
 		%><h1>먼저 로그인을 해주세요</h1><br/>
 		<a href="<%= ctx%>/member/service/login.jsp">로그인 하시겠습니까?</a><br/><br/>
@@ -74,15 +64,12 @@ span.meta{width: 200px; background-color:yellow; float: left}
 	<input type="submit" value="수정 완료">
 	<input type="reset" value="취소">
 	</form>
-
+	
 <%
 	}
 	%>
-<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
-	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
-	<div id ="footer">
-	Copyright � hanbit academy
-	</div>
-	</div>
-</body>
-</html>
+<a href="<%=ctx %>/member/main.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
+</div>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />

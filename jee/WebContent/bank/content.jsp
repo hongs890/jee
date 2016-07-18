@@ -1,19 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	    <%
-    String ctx = application.getContextPath();
-    %>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>회원관리</title>
-<link rel="stylesheet" href="<%=ctx %>/css/member.css" />
-</head>
-<body>
-<div id="header">
-<h2>회원관리</h2>
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
 	<div style="text-align: center">
 		<div style="width: 300px; margin: 0 auto; text-align: left;">
 			<ol>
@@ -30,8 +16,3 @@
 		</div>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-	<div id="footer">
-	Copyright � hanbit academy
-	</div>
-</body>
-</html>

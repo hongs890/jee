@@ -1,30 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="member.MemberServiceImpl" %>
-    <%@ page import="member.MemberService" %>
-    <%@ page import="member.MemberBean" %>
-        <%
-    String ctx = application.getContextPath();
-    %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>회원가입</title>
-<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="member.MemberServiceImpl" %>
+<%@ page import="member.MemberService" %>
+<%@ page import="member.MemberBean" %>
+<% String ctx = application.getContextPath(); %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<jsp:include page= "../../global/nav.jsp" />
 <style type="text/css">
-div.box {border: 5px solid powderblue;
-	margin: 0 auto;
-	width: 600px;
-	text-align: left;}
 span.meta{width: 200px; background-color:yellow; float: left}
-div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 </style>
-</head>
-<body>
-<div id ="header">
-<h1>회원가입 페이지</h1>
-</div>
 <div style="text-align: center">
 	
 		<%
@@ -72,12 +56,8 @@ div.joinDiv{border:0px width: 50%; margin: 10px 50px 10px 50px}
 		}
 		%>	<br/>	
 
-	<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+	<a href="<%=ctx %>/member/main.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/index.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
-		
 </div>
-	<div id="footer">
-	Copyright � hanbit academy
-	</div>
-</body>
-</html>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />

@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   <% String ctx = application.getContextPath(); %>
-    <%@ page import = "member.MemberService" %>
-    <%@ page import = "member.MemberServiceImpl" %>
-    <%@ page import = "member.MemberBean" %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>내정보보기</title>
-<link rel="stylesheet" href="<%=ctx %>/css/member.css"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String ctx = application.getContextPath(); %>
+<%@ page import = "member.MemberService" %>
+<%@ page import = "member.MemberServiceImpl" %>
+<%@ page import = "member.MemberBean" %>
+<jsp:include page= "../../global/top.jsp" />
+<jsp:include page= "../../global/header.jsp" />
+<jsp:include page= "../../global/nav.jsp" />
 <style>
 p    {color: red;}
 	#member_detail{border: 1px solid gray; width:90%; height: 400px; margin: 0 auto; border-collapse: collapse;}
@@ -18,13 +14,7 @@ p    {color: red;}
 	.font_bold{font-weight: bold;}
 	.bg_color_yellow{background-color: yellow}
 </style>
-</head>
-<body>
-<div style="text-align: center">
-<div id="header">
-<h1>회원정보보기 페이지</h1>
-</div>
-		
+	<div style="text-align: center">
 			<%
 		MemberService service = MemberServiceImpl.getInstanceImpl();
 		MemberBean member = new MemberBean();
@@ -68,19 +58,9 @@ p    {color: red;}
 				<td colspan="2"><%=service.getSession().getRegDate() %></td>
 						</tr>
 		</table>
-		
-		
 		<br/> 
-	
-		
-		
-		
-		
-		<a href="<%=ctx %>/member/member_controller.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
+	<a href="<%=ctx %>/member/main.jsp"><img src="<%=ctx %>/img/member.png" alt="member" style="width:30px" /></a>
 	<a href="<%=ctx %>/global/main.jsp"><img src="<%=ctx %>/img/home.png" alt="home" style="width:30px" /></a>
 	</div>
-	<div id ="footer">
-	Copyright � hanbit academy
-	</div>
-</body>
-</html>
+<jsp:include page= "../../global/footer.jsp" />
+<jsp:include page= "../../global/end.jsp" />
