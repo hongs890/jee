@@ -58,14 +58,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String delete(String id) {
-		String remove = "";
-		if (dao.delete(id) == 1) {
-			remove = "삭제 성공";
-		}else {
-			remove = "삭제 실패";
-		}
-		return remove;
+	public void delete(MemberBean mem) {
+		dao.delete(mem);
+		session = dao.findById(mem.getId());
 	}
 	
 	

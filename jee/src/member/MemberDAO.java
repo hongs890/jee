@@ -74,17 +74,16 @@ public class MemberDAO {
 		}
 	}
 
-	public int delete(String id) {
-		int result = 0;
+	public void delete(MemberBean mem) {
 		String sql = "delete from member where id = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			result = pstmt.executeUpdate();
+			pstmt.setString(1, mem.getId());
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+	
 	}
 
 	

@@ -19,10 +19,11 @@
 	<div style="text-align:center">
 		<%
 		MemberService service = MemberServiceImpl.getInstanceImpl();
-
+		MemberBean bean = new MemberBean();
 		if(request.getParameter("id").equals(service.getSession().getId())
 				&&request.getParameter("pw").equals(service.getSession().getPw())){
-			service.delete(service.getSession().getId());
+			bean.setId(service.getSession().getId());
+			service.delete(bean);
 			response.sendRedirect(ctx+"/index.jsp");
 		}else{
 			%>잘못된 정보를 입력하셨습니다.<br/>
