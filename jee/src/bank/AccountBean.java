@@ -3,9 +3,7 @@
  */
 package bank;
 
-import java.util.Random;
-
-import global.Constants;
+import java.io.Serializable;
 
 /**
  * @date : 2016. 6. 16.
@@ -13,7 +11,8 @@ import global.Constants;
  * @file : Account.java
  * @story :
  */
-public class AccountBean {
+public class AccountBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int accountNo, money; 
 	private String id;
 	

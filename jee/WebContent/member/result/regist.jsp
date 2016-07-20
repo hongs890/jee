@@ -2,7 +2,6 @@
 <%@ page import="member.MemberServiceImpl" %>
 <%@ page import="member.MemberService" %>
 <%@ page import="member.MemberBean" %>
-<% String ctx = application.getContextPath(); %>
 <jsp:include page= "../../global/top.jsp" />
 <jsp:include page= "../../global/header.jsp" />
 <jsp:include page= "../../global/nav.jsp" />

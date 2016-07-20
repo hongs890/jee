@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% String ctx = application.getContextPath(); %>
 	<div style="text-align: center">
 		<div style="width: 300px; margin: 0 auto; text-align: left;">
+		<h1>회원관리</h1>
 			<ol>
 				<li><a href="<%=ctx %>/member/service/regist.jsp">회원가입</a></li>
 				<li><a href="<%=ctx %>/member/service/find_by_id.jsp">내정보보기</a></li>

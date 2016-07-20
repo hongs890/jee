@@ -3,10 +3,9 @@
  */
 package member;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 /**
  * @date  : 2016. 6. 16.
@@ -14,7 +13,8 @@ import javax.swing.JOptionPane;
  * @file  : Student.java
  * @story :
  */
-public class MemberBean {
+public class MemberBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String id, pw, name, regDate, gender, ssn, profileImg, email;
 	private int birth;
 	
